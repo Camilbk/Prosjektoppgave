@@ -1,0 +1,29 @@
+\begin{minipage}{.35\textwidth}
+\begin{tikzpicture}
+\draw[->] (0,-0.2) -- (0,2.5);
+\draw[->] (-0.2,0) -- (2.5,0);
+\draw[->][magenta!70] (0,2) -- (0.8,1.2) node[anchor = south west] {$V_f$};
+\draw[>-][black!50] (2,0) -- (1.2,0.8) node[anchor = south west] {$V_c$};
+\draw[black!10] (2,0) -- (0.8,1.2);
+%\node[magenta!70] at (1.3,1.1) {$V_f$};
+\node at (2, -0.2) {$R$};
+\node at (-0.2, 2) {$V$};
+\node at (2.6, -0.2) {$\rho$};
+\node at (-0.2, 2.6) {$v$};
+\end{tikzpicture}
+\caption{The velocity function.}
+\label{Fig:Velocity function}
+\end{minipage}
+\begin{minipage}{.35\textwidth}
+\begin{tikzpicture}
+\draw[->] (0,-0.2) -- (0,2);
+\draw[->] (-0.2,0) -- (2.5,0);
+\draw[cyan!50]  plot [smooth, tension = 1.5] coordinates { (0,0) (1,1) (2,0)};
+\node at (2, -0.2) {$R$};
+%\node at (-0.2, 2) {$V$};
+\node at (2.6, -0.2) {$\rho $};
+\node at (-0.2, 2.1) {$\rho v$};
+\end{tikzpicture}
+\caption{The flux function, or the velocity function in the $(\rho, \rho v)$-plane.}
+\label{Fig:Flux function}
+\end{minipage}

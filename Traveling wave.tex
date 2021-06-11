@@ -1,0 +1,30 @@
+% --------------------  TRAVELLING WAVE
+%\begin{comment}
+We know have $n$ rarefaction- and shock curves around $u_l$. We will now investigate which of these lead to permissible solutions of both scalar and systems of conservation laws. We investigate the viscous regularisation equation, for $\epsilon > 0 $
+
+\begin{equation}
+    u_t + f(u)_x = \epsilon u_{xx}
+    \label{Viscous_reg}
+\end{equation}
+
+which is well-posed. And if we let $\epsilon \to 0$ we arrive at the limit case of the conservation law. We look for travelling wave solutions of the form $u(x,t) = U(\frac{x-st}{\epsilon}), \quad \xi = \frac{x-st}{\epsilon}$. Differentiation with respect to xi, we get the ordinary differential equation
+
+\begin{equation*}
+	    \begin{split}
+	        \frac{-s}{\epsilon} \dot U + \frac{1}{\epsilon} f'(U) \dot U = \frac{\epsilon}{\epsilon^2} \ddot U \\
+	        \dot U = -sU + f(U) + A \\
+	    \end{split}
+\end{equation*}
+
+\begin{align*}
+    \xi \rightarrow -\infty, \dot U \rightarrow 0: \quad \dot U = f(U) - f(u_l) - s(U-u_l) \\
+    \xi \rightarrow \infty, \dot U \rightarrow 0: \quad  \dot U = f(U) - f(u_r) - s(U-u_r)
+    \label{Eq:travelling wave}
+\end{align*}
+
+This yields the travelling wave relation: 
+\begin{equation*}
+    s|k-u_l| < sgn(u-k)(f(k)-f(u_l)), \quad u_l < k < u_r
+\end{equation*}
+%\end{comment}
+% -------------------- TRAVELLING WAVE
