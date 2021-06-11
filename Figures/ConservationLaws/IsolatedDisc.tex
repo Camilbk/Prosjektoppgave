@@ -1,0 +1,11 @@
+\begin{tikzpicture}
+    % coordinate sys
+    \draw[->] (0,-0.2) -- (0,4) node[anchor=south east] {$t$};
+    \draw[->] (-0.2,0) -- (4,0) node[anchor=north west] {$x$};
+    
+    % plot
+    \filldraw[fill=cyan!10!white, draw=black!30] (1.9, 2.1) circle (0.7cm);
+    \node at (1.7,2.4) {$D_1$};
+    \node at (2,1.7) {$D_2$};
+    \draw (0.7,0.5) arc (150:125:10cm) node[anchor=north west] {$x(t)$};
+\end{tikzpicture}
