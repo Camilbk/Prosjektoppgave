@@ -11,8 +11,8 @@ V = 5   # max speed
 vf = lambda rho: (1-rho/R)*V
 
 # initial condition
-rho_l = 0.8
-rho_r = 0.2
+rho_l = 0.2
+rho_r = 0.9
 
 # Shock speed
 s = (rho_r*vf(rho_r) - rho_l*vf(rho_l))/(rho_r - rho_l)
@@ -100,10 +100,15 @@ def plot_xtSol():
 
 
 def plotRarefactionWave():
-    rho_l = 0.8
-    rho_r = 0.2
+
     plotInitialValues()
     plotAnalyticalSolution(0.2, True)
     plot_xtSol()
 
-plotRarefactionWave()
+def plotShockWave():
+
+    plotInitialValues()
+    plotAnalyticalSolution(0.5, True)
+    plot_xtSol()
+
+plotShockWave()
