@@ -776,8 +776,8 @@ The Riemann problem (\ref{Eq:RPFreePhase}) for the free phase, has the following
 \begin{align*}
     & \rho(x,t) = \begin{cases}
     \rho_l & \text{for $x < f'(\rho_l)t$, } \\
-    (f')^{-1}(x/t)  &  \text{for $x < f'(\rho_l)t f'(\rho_r)t$,} \\
-     \rho_r & \text{for $x \geq f'(\rho_l)t$, }
+    (f')^{-1}(x/t)  &  \text{for $ f'(\rho_l)t \leq x \geq f'(\rho_r)t$,} \\
+     \rho_r & \text{for $x > f'(\rho_l)t$, }
     \end{cases} \\
     & f'(\rho) = V(1-\frac{2 \rho}{R}) , \quad  (f')^{-1}(\xi) = \frac{R}{2}(1-\frac{\xi}{V}). 
 \end{align*}
