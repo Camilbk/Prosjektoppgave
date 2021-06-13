@@ -15,6 +15,8 @@
 \usepackage{todonotes}
 \usepackage{xr}
 \usepackage{verbatim} 
+\usepackage{caption}
+\usepackage{subcaption}
 \usepackage{tikz}
 \pgfplotsset{compat=1.17}
 \usepackage{csquotes}
@@ -788,6 +790,31 @@ We conclude this solution of the phase transition model if initial data $\rho_l,
     \input{Figures/Model/SolRPFreePhase}
 \end{figure}
 
+\begin{figure}
+     \centering
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/RarefacIV.png}
+         %\caption{Initial value plot.}
+         %\label{fig:RarefacIV}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/RarefacAtTime.png}
+         %\caption{Solution $\rho(x,t)$ at time $t = 0.2$}
+         %\label{fig:RarefacAtTime}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/RarefactionFull.png}
+         %\caption{The solution $\rho$ in the $x,t$-plane. }
+         %\label{fig:five over x}
+     \end{subfigure}
+        \caption{The evolution of a solution with initial values $\rho_l = 0.8, \rho_r = 0.2$, seen to the left. After $t = 0.2$, we have the middle figure. A full solution in the $x,t$-plane can be seen to the right.}
+        \label{fig:ExampleRarefaction}
+\end{figure}
 
 \subsection{The Riemann Problem for the Congested phase}\label{RPCongPh}
 
