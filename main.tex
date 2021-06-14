@@ -133,11 +133,11 @@ When given a non-linear conservation law of the form (\ref{GeneralEquation}), ou
 \begin{figure}
 \begin{center}
 \input{Figures/ConservationLaws/Multivalued}
-\label{Fig:Multivalued}
 \caption{Non-classical solution using method of characteristics.}
+\label{Fig:Multivalued}
 \end{center}
 \end{figure}
-Therefore, we will extend our admissable set of solutions in order to allow such discontinuities; so-called weak solutions \cite{HoldenH.Helge2015Ftfh}. 
+Therefore, we will extend our admissible set of solutions in order to allow such discontinuities; so-called weak solutions \cite{HoldenH.Helge2015Ftfh}. 
 
 Consider the model equation (\ref{GeneralEquation}) and define $\phi \in C_0^{\infty}(\Omega \times [0, T])$ have compact support, and assume initial condition $u|_{t=0} = u_0 $. Multiplying with the test function $\phi$, and integrating by parts over an arbitrary domain $[0,T] \times \Omega \subseteq \mathbb{R}$, we obtain
 \begin{align}
@@ -773,6 +773,7 @@ The Riemann problem (\ref{Eq:RPFreePhase}) for the free phase, has the following
     \end{cases} 
     \quad \quad s = \frac{f(\rho_r) - f(\rho_l)}{\rho_r - \rho_l} = \frac{\rho_r v_f(\rho_r) -\rho_l v_f(\rho_l)}{\rho_r - \rho_l}.
 \end{align*}
+If the shock speed is negatove, we will have a wave propagating backwards. An example of a bacward shock solution of the Riemann problem can seen in Figure \ref{fig:ExampleBackwardsShock}. Similarly, if the shock speed is positive we will have a shock propagating forwards. An example of a forward shock solution of the Riemann problem can be seen in Figure \ref{fig:ExampleForwardShock}
 
 \paragraph{Rarefaction solution.} If $\rho_l > \rho_r$, then $f'(\rho_l) < f'(\rho_r) $ so the entropy-admissible solution is given by a rarefaction wave.
 \begin{align*}
@@ -783,6 +784,7 @@ The Riemann problem (\ref{Eq:RPFreePhase}) for the free phase, has the following
     \end{cases} \\
     & f'(\rho) = V(1-\frac{2 \rho}{R}) , \quad  (f')^{-1}(\xi) = \frac{R}{2}(1-\frac{\xi}{V}). 
 \end{align*}
+An example of a rarefaction wave solution for the Riemann problem can be seen in Figure \ref{fig:ExampleRarefaction}.
 
 We conclude this solution of the phase transition model if initial data $\rho_l, \rho_r \in \Omega_f$.
 
@@ -815,9 +817,58 @@ We conclude this solution of the phase transition model if initial data $\rho_l,
         \caption{The evolution of a solution with initial values $\rho_l = 0.8, \rho_r = 0.2$, seen to the left. After $t = 0.2$, we have the middle figure. A full solution in the $x,t$-plane can be seen to the right.}
         \label{fig:ExampleRarefaction}
 \end{figure}
+\begin{figure}
+     \centering
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/BackwShockIV.png}
+         %\caption{Initial value plot.}
+         %\label{fig:RarefacIV}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/BackwShockAtTime.png}
+         %\caption{Solution $\rho(x,t)$ at time $t = 0.2$}
+         %\label{fig:RarefacAtTime}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/BackwShockFull.png}
+         %\caption{The solution $\rho$ in the $x,t$-plane. }
+         %\label{fig:five over x}
+     \end{subfigure}
+        \caption{The evolution of a solution with initial values $\rho_l = 0.2, \rho_r = 0.9$, seen to the left. After $t = 0.5$, we have the middle figure. A full solution in the $x,t$-plane can be seen to the right.}
+        \label{fig:ExampleBackwardsShock}
+\end{figure}
+\begin{figure}
+     \centering
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/ForwShockIV.png}
+         %\caption{Initial value plot.}
+         %\label{fig:RarefacIV}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/ForwShockAtTime.png}
+         %\caption{Solution $\rho(x,t)$ at time $t = 0.2$}
+         %\label{fig:RarefacAtTime}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/ForwShockFull.png}
+         %\caption{The solution $\rho$ in the $x,t$-plane. }
+         %\label{fig:five over x}
+     \end{subfigure}
+        \caption{The evolution of a solution with initial values $\rho_l = 0.3, \rho_r = 0.6$, seen to the left. After $t = 0.5$, we have the middle figure. A full solution in the $x,t$-plane can be seen to the right.}
+        \label{fig:ExampleForwardShock}
+\end{figure}
 
 \subsection{The Riemann Problem for the Congested phase}\label{RPCongPh}
-
 When the $\rho$ increases and velocity $v$ reaches the constant threshold $v(\check R) = V_c$, see Figure \ref{Fig:Velocity function}, the traffic enters the congested phase. Now we have the relation $ V > V_f > V_c $, and we define the domain for the congested phase as follows \begin{equation}
     \Omega_c = \Bigg\{(\rho, q) \in [0, \mathbb{R}] \times [0, \infty) : v_c(\rho, q) \leq V_c, \frac{q-Q}{\rho} \in \Bigg[\frac{Q_1 - Q}{R}, \frac{Q_2 - Q}{R} \Bigg]  \Bigg\},
     \label{Domain congested ph}
@@ -1008,7 +1059,7 @@ We will now demonstrate possible solutions of (\ref{Eq:RPCongestedPhase}). The c
 \end{align}
 \begin{align*}
    & \lambda_1(u_l) = .. , \quad \lambda_2(u_l) = \lambda_2(u_r) = ... \\
-   & w_1 = . . .
+   & w_1(\xi; u_l, u_m) = \begin{pmatrix} \frac{R(2\rho_l \xi - q_l + Q) +Q \rho_l}{2(Q-q_l} \\  R/2 ( \frac{q_l - Q}{\rho_l} - \xi) + Q/2 \end{pmatrix} 
 \end{align*}
 
 \begin{wrapfigure}[11]{r}{0.29\textwidth}
@@ -1021,12 +1072,7 @@ Recall the first family can be both genuinely nonlinear and linearly degenerate 
 
 We conclude this solution of the phase transition model if initial data $u_l = (\rho_l, q_l), u_r = (\rho_r, q_r) \in \Omega_c $
 
-Now we will demonstrate a few examples with actual numbers. 
-
-bla bla noe i Python \\
-lba bla bla :-)))
-\\ seeee så mange flotte plos jeg har av fortynninger og sjokk! 
-\\ wiiii
+Now we will demonstrate two examples, one with a shock and another with rarefaction. 
 
 \subsection{The Riemann Problem for the full model}
 We will now combine the two sets of equations and solve the system including phase-transitions. If both $u_l, u_r \in \Omega_f$ then the solution is given in section \ref{RPFreePh}, and if $u_l, u_r \in \Omega_c$ then the solution is given in section \ref{RPCongPh}. Thus, in this section we will only deal with the cases $u_l \in \Omega_f, u_r \in \Omega_c$ and $u_l \in \Omega_c, u_r \in \Omega_f$.
@@ -1051,7 +1097,7 @@ When introducing a phase transition to our model, we again have to deal with the
         \label{Eq:RH_PhT}
     \end{align} are satisfied for all $t \geq 0$.
 \end{enumerate}
-This definition looks like our derivation of the Rankine-Hugoniot condition in the start of Chapter $2$. This entropy condition is reasonable, as one can think of the disjoint domains as being separated by a discontinuity. That enables us to use the same argument as we did in the derivation of the Rankine-Hugoniot condition. Thus, we can think of phase transitions of this type as having a shock-like behaviour. In order to make a full solution $u(x,t)$ for $u_l$ and $u_r$ in separate domains, we stitch together our previous results from the free- and congested phase together with the entropy condition. In this way, we are still able to preserve the Lax solutions and their properties at each side of the gap. Now this stitched solution is also a new solution. We should also note that $3.$ only has a requirement for $\rho$. The reason for this, is hat we only want to preserve the number of cars across phases, we do not want to conserve momentum. In proposition $3.1$, Colombo gives another requirement. For the full model "no $2 \times 2$ system of conservation laws may have as its Lax solutions those defines by this Riemann solver"\cite[p.~713]{Colombo2003}. This is a necessity, as if we could have solved the phase transition model by only using eg. the congested model, we would loose uniqueness. At the end of this section, we will give an example of why this is true.
+This definition looks like our derivation of the Rankine-Hugoniot condition in the start of Chapter $2$, which is reasonable, as one can think of the disjoint domains as being separated by a discontinuity. That enables us to use the same argument as we did in the derivation of the Rankine-Hugoniot condition. Thus, we can think of phase transitions of this type as having a shock-like behaviour. In order to make a full solution $u(x,t)$ for $u_l$ and $u_r$ in separate domains, we stitch together our previous results from the free- and congested phase together with the entropy condition. In this way, we are still able to preserve the Lax solutions and their properties at each side of the gap. Now this stitched solution is also a new solution. One should also note that $3.$ only has a requirement for $\rho$. The reason for this, is hat we only want to preserve the number of cars across phases, we do not want to conserve momentum. In proposition $3.1$, Colombo gives another requirement. For the full model "no $2 \times 2$ system of conservation laws may have as its Lax solutions those defines by this Riemann solver"\cite[p.~713]{Colombo2003}. This is a necessity, as if we could have solved the phase transition model by only using eg. the congested model, we would loose uniqueness. At the end of this section, we will give an example of why this is true.
 In order for  Now our goal is to find a solution of the form, for $u_l \in \Omega_f$ and $u_r \in \Omega_c$, with $u_m \in \Omega_c$
 \begin{align}
     u(x,t) = \begin{cases}
@@ -1079,72 +1125,7 @@ where starting in the left state $u_l \in \Omega_c$, we travel on a $1$-family w
 Worth noting here, is that we need to determine the relationship between $\lambda_1$ and $\Lambda$, as we require a monotone increase for the entropy condition. Hence, the solutions (\ref{Eq:APrioriFreeToCong}), (\ref{Eq:APrioriCongToFree}), will change when investigating the specific problem. 
 %\todo{If V_c = V_f}
 
-\paragraph{Generalised Riemann coordinates.}
-We generalise to Riemann coordinates. Let $\hat u = (\hat R, \hat Q)$ be the point in $\Omega_f$ defined by $\hat Q = \hat R V$, see Figure \ref{Domain congested ph}. The point $\hat u$ lies on the continuation of the lower border of $\Omega_c$.  
-For $\Omega_f$ we have \todo{$\Omega_f$ riemann coord.}\\
-For $\Omega_c$ we have the right eigenvectors
-\begin{align*}
-    &\lambda_1 = \big ( \frac{2}{R} - \frac{1}{\rho} )\big (Q- q) - \frac{Q}{R}, \quad \quad \lambda_2 = \big(1 - \frac{\rho}{q}\big)\frac{q}{\rho} = v_c \\
-    & r_1 = \begin{pmatrix} \rho \\ q - Q \end{pmatrix} \quad \quad \quad  \quad \quad \quad \quad \quad  r_2 = \begin{pmatrix} R - \rho \\ \frac{Rq}{\rho} \end{pmatrix} \\
-    & \nabla \lambda_1 \cdot r_1 = 2\frac{Q-q}{R} \quad \quad \quad \quad \quad  \quad \nabla \lambda_2 \cdot r_2 = 0
-\end{align*}
-Note we have already found $\nabla \lambda_2 \cdot r_2 = 0$, we choose this as $\omega_1 = \lambda_2 = v_c$. For $\nabla \omega_2 \cdot r_1 = \big ( \frac{\partial \omega_2}{\partial \rho}, \frac{\partial \omega_2}{\partial q} \big ) \cdot \begin{pmatrix} \rho \\ q - Q \end{pmatrix} = 0 $ we see that by choosing  $\frac{\partial \omega_2}{\partial \rho} = - \frac{ q-Q }{\rho}$ and $ \frac{\partial \omega_2}{\partial q} =  \frac{1}{\rho} $ the expressions cancel. Now we have    $\omega_2 = \frac{q-Q}{\rho}$, which is a desirable result as it the slope of the first family wave. 
 
-Now we have the Riemann coordinates
-\begin{align*}
-    \omega_1 = \begin{cases}
-    v_c(\rho, q), (\rho, q) \in \Omega_c \\
-    V_f, (\rho, q) \in \Omega_f
-    \end{cases}
-    \omega_2 = \begin{cases}
-    \frac{q-Q}{\rho}, (\rho, q) \in \Omega_c \\
-    \frac{q-Q}{\rho}, (\rho, q) \in \Omega_f, \rho \geq \hat R \\
-    v_f(\rho) - v_f(\hat R) + \frac{\hat Q - Q}{\hat R }, (\rho, q) \in \Omega_f, \rho \leq \hat R \\
-    \end{cases}
-\end{align*}
-
-%We continue by finding the direction of the rarefaction and shock in the new coordinate system. 
-\begin{figure}[H] \centering 
-\input{Figures/Model/FullDomainInRhoQAndRiemann}
-\end{figure}
-
-% -----------------------------------------------------------
-% -----------------------------------------------------------
-% -----------------------------------------------------------
-\begin{comment}
-
-From Figure \ref{Fig:FullSol_ic_rhoq}, observe that
-\begin{align*}
-    q > Q \begin{cases}
-    q \searrow rarefaction\\
-    q \nearrow shock
-    \end{cases}
-    q < Q \begin{cases}
-    q \searrow shock \\
-    q \nearrow rarefaction
-    \end{cases}
-\end{align*}
-
-Using the relation between the coordinates $\rho, q$ and $\omega_1, \omega_2$ 
-\begin{itemize}
-    \item $\omega_2 > 0$ 
-    $\rho$ const. $q \searrow \leftrightarrow \omega_1, \omega_2 \searrow$ rarefaction
-    \item $\omega_2 < 0$ 
-    $\rho$ const. $q \searrow \leftrightarrow \omega_1, \omega_2 \searrow$ shock
-\end{itemize}
-
-Which means we have the relation between shock and rarefaction in $\omega$-coordinates, the result can be seen in Figure \ref{Fig:FullSol_ic_ww}
-\begin{align*}
-    \omega_2 > 0 \begin{cases}
-    \omega_2 \searrow rarefaction\\
-    \omega_2 \nearrow shock
-    \end{cases}
-    \omega_2 < 0\begin{cases}
-    \omega_2 \searrow shock \\
-    \omega_2 \nearrow rarefaction
-    \end{cases}
-\end{align*}
-\end{comment}
 % -----------------------------------------------------------
 % -----------------------------------------------------------
 
@@ -1465,6 +1446,25 @@ Colombo proved the Cauchy problem admits a global solution in time, and without 
 Also qualitative properties from traffic flow were shown to agree with the properties of our model \cite{Colombo2003}.   
 
 \textcolor{red}{This Riemann solver enjoys properties underlined in literature, se Colobo sine kilder. 2, 11, as not satisfied in several common models.}
+
+\begin{tikzpicture}
+% coordinates
+\draw[->] (0,-0.2) -- (0,2) node[anchor= south east] {$q$};
+\draw[->] (-0.2,0) -- (2.2,0) node[anchor= north west] {$\rho$};
+% rarefactions
+%\draw[<-][black!50] (0, 1) -- (2, 1.6);
+%\draw[dotted] (0,1) -- (2, 1);
+%\filldraw[black] (1,0.7) circle (0.5pt);
+% raref. and shock
+\draw[ cyan!50, domain=0.6:2]  plot[id=x] function{(1-x/2) + (1.67*0.58/(1-1.67/2) -1)*(1-x/2)*x/1.67};
+\draw[ cyan!50, domain=0.4:2]  plot[id=x] function{(1-x/2) + (1.67*0/(1-1.67/2) -1)*(1-x/2)*x/1.67};
+% contacts
+\draw[orange!50, domain=0.5:1.8]  plot[id=x] function{x*(1-x/2)/(2-x)*0.58};
+\draw[orange!50, domain=0.1:1]  plot[id=x] function{x*(1-x/2)/(2-x)*5};
+%\node at (1, 0.5) {$u_l$};
+\node at (2, -0.2) {$R$};
+\node at (-0.25, 1) {$Q$};
+\end{tikzpicture}
 
 
 One can reach a queue or a stop sign from anywhere in $\Omega_f$, even if in 80sone or in 40 sone. So it doesn't make sense to move from $u_l$ below $q_m$ up to the shortest distance between the two phases in order to do a phase transition. 
