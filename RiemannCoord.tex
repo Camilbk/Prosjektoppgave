@@ -1,0 +1,67 @@
+
+\paragraph{Generalised Riemann coordinates.}
+We generalise to Riemann coordinates. Let $\hat u = (\hat R, \hat Q)$ be the point in $\Omega_f$ defined by $\hat Q = \hat R V$, see Figure \ref{Domain congested ph}. The point $\hat u$ lies on the continuation of the lower border of $\Omega_c$.  
+For $\Omega_f$ we have \todo{$\Omega_f$ riemann coord.}\\
+For $\Omega_c$ we have the right eigenvectors
+\begin{align*}
+    &\lambda_1 = \big ( \frac{2}{R} - \frac{1}{\rho} )\big (Q- q) - \frac{Q}{R}, \quad \quad \lambda_2 = \big(1 - \frac{\rho}{q}\big)\frac{q}{\rho} = v_c \\
+    & r_1 = \begin{pmatrix} \rho \\ q - Q \end{pmatrix} \quad \quad \quad  \quad \quad \quad \quad \quad  r_2 = \begin{pmatrix} R - \rho \\ \frac{Rq}{\rho} \end{pmatrix} \\
+    & \nabla \lambda_1 \cdot r_1 = 2\frac{Q-q}{R} \quad \quad \quad \quad \quad  \quad \nabla \lambda_2 \cdot r_2 = 0
+\end{align*}
+Note we have already found $\nabla \lambda_2 \cdot r_2 = 0$, we choose this as $\omega_1 = \lambda_2 = v_c$. For $\nabla \omega_2 \cdot r_1 = \big ( \frac{\partial \omega_2}{\partial \rho}, \frac{\partial \omega_2}{\partial q} \big ) \cdot \begin{pmatrix} \rho \\ q - Q \end{pmatrix} = 0 $ we see that by choosing  $\frac{\partial \omega_2}{\partial \rho} = - \frac{ q-Q }{\rho}$ and $ \frac{\partial \omega_2}{\partial q} =  \frac{1}{\rho} $ the expressions cancel. Now we have    $\omega_2 = \frac{q-Q}{\rho}$, which is a desirable result as it the slope of the first family wave. 
+
+Now we have the Riemann coordinates
+\begin{align*}
+    \omega_1 = \begin{cases}
+    v_c(\rho, q), (\rho, q) \in \Omega_c \\
+    V_f, (\rho, q) \in \Omega_f
+    \end{cases}
+    \omega_2 = \begin{cases}
+    \frac{q-Q}{\rho}, (\rho, q) \in \Omega_c \\
+    \frac{q-Q}{\rho}, (\rho, q) \in \Omega_f, \rho \geq \hat R \\
+    v_f(\rho) - v_f(\hat R) + \frac{\hat Q - Q}{\hat R }, (\rho, q) \in \Omega_f, \rho \leq \hat R \\
+    \end{cases}
+\end{align*}
+
+%We continue by finding the direction of the rarefaction and shock in the new coordinate system. 
+\begin{figure}[H] \centering 
+\input{Figures/Model/FullDomainInRhoQAndRiemann}
+\end{figure}
+
+% -----------------------------------------------------------
+% -----------------------------------------------------------
+% -----------------------------------------------------------
+\begin{comment}
+
+From Figure \ref{Fig:FullSol_ic_rhoq}, observe that
+\begin{align*}
+    q > Q \begin{cases}
+    q \searrow rarefaction\\
+    q \nearrow shock
+    \end{cases}
+    q < Q \begin{cases}
+    q \searrow shock \\
+    q \nearrow rarefaction
+    \end{cases}
+\end{align*}
+
+Using the relation between the coordinates $\rho, q$ and $\omega_1, \omega_2$ 
+\begin{itemize}
+    \item $\omega_2 > 0$ 
+    $\rho$ const. $q \searrow \leftrightarrow \omega_1, \omega_2 \searrow$ rarefaction
+    \item $\omega_2 < 0$ 
+    $\rho$ const. $q \searrow \leftrightarrow \omega_1, \omega_2 \searrow$ shock
+\end{itemize}
+
+Which means we have the relation between shock and rarefaction in $\omega$-coordinates, the result can be seen in Figure \ref{Fig:FullSol_ic_ww}
+\begin{align*}
+    \omega_2 > 0 \begin{cases}
+    \omega_2 \searrow rarefaction\\
+    \omega_2 \nearrow shock
+    \end{cases}
+    \omega_2 < 0\begin{cases}
+    \omega_2 \searrow shock \\
+    \omega_2 \nearrow rarefaction
+    \end{cases}
+\end{align*}
+\end{comment}
