@@ -1,5 +1,7 @@
 import numpy as np
 from matplotlib import pyplot as plt
+plt.rcParams.update({
+    "font.size":15})
 
 ##
 ##  HYPERBOLIC TRAFFIC MODEL WITH
@@ -18,7 +20,7 @@ V = 5   # max speed
 Q = 0.5 # wide jam param.
 
 xs = np.linspace(-1,1,1000)
-ts = np.linspace(0,5, 500)
+ts = np.linspace(0,1, 1000)
 
 # Eigenvalues
 lambda1 = lambda r,q: (2/R - 1/r)*(Q-q) - Q/R
@@ -26,18 +28,19 @@ lambda2 = lambda r,q: q/r*(1-r/R)
 
 
 # Rarefaction
-#w_r = lambda r, q, xi: 0.5*(r*(Q-q*r*xi - 2*r*(2*Q+1/R)))/(R*(Q-q)+ (q*r - 2*Q*r - Q/2) - 2*r/R)
-#w_q = lambda r, q, xi: R/2*( xi + (Q-q)/r) - Q*(1+1/R)
-
-w_r = lambda r, q, xi: 0.5*(r*(Q-q*r*xi - 2*r*(2*Q+1/R)))/(R*(Q-q)+ (q*r - 2*Q*r - Q/2) - 2*r/R)
-w_q = lambda r, q, xi: R/2*( xi + (Q-q)/r) - Q*(1+1/R)
+#w_r = lambda r, q, xi: (R*(r*xi - q + 2*Q) -Q*r)/(2*(q- 2*Q + R/r*(Q-q)))
+w_r = lambda r, q, xi: ( R*(r*xi - q +Q) + Q*r)/(2*(Q-q))
+w_q = lambda r, q, xi: R/2*( (q-Q)/r - xi ) +Q/2
 
 # Initial values, u_l, u_r
-r_l = 0.6
-q_l = 0.6
+r_l = 0.3
+q_l = 0.7
 
-r_r = 0.2
-q_r = 0.7
+r_r = 0.8
+q_r = 0.4
+
+r_m = 0.92
+q_m = 1.11
 
 def plotInitialValues():
     sol_r = np.zeros(len(xs))
@@ -55,12 +58,15 @@ def plotInitialValues():
             sol_q[i] = q_r
             i += 1
 
-    plt.plot(sol_r, 'r', label=r"$\rho$")
-    plt.plot(sol_q, 'b', label=r"$q$")
+    plt.plot(xs, sol_r, 'r', label=r"$\rho$", color = "teal")
+    plt.plot(xs, sol_q, 'b', label=r"$q$", color = "goldenrod")
+    #plt.title("Inital values "+ r"$u(x,0): $" + r"$u_l = {},{}, u_r = {},{} $".format(r_l,q_l, r_r, q_r))
+    plt.title("Inital values " + r"$u(x,0): $")
     plt.xlabel("x")
     plt.ylabel("u")
     plt.legend()
     plt.show()
+
 
 
 def findMiddleState(plot):
@@ -71,11 +77,12 @@ def findMiddleState(plot):
     q2 = lambda r: (q_r / r_r) * ((R - r_r) / (R - r)) * r  # 2nd family wave
     # finding smallest point
     idx = np.argwhere(np.diff(np.sign(q1(r1s) - q2(r2s)))).flatten()
+    print(np.sign(q1(r1s) - q2(r2s)))
     r_m = r2s[idx]
     q_m = q1(r_m)
     if (plot):
-        plt.plot(r1s, q1(r1s), '-')
-        plt.plot(r2s, q2(r2s), '-')
+        plt.plot(r1s, q1(r1s), '-',  color = "teal")
+        plt.plot(r2s, q2(r2s), '-', color = "goldenrod")
         plt.plot(r_l, q_l, 'ro')
         plt.annotate(r"$u_l$", (r_l, q_l+.05))
         plt.plot(r_m, q_m, 'ro')
@@ -88,8 +95,19 @@ def findMiddleState(plot):
         plt.show()
     return r_m, q_m
 
+def findMiddleState2():
+    a = (q_l - Q)/r_l
+    print("a: ", a)
+    b = (R-r_r)*q_r/r_r
+    print("b: ", b)
+
+
+
+
+#findMiddleState2()
 # Middle state u_m:
-r_m, q_m = findMiddleState(plot=False)
+#r_m, q_m = findMiddleState(plot=False)
+
 
 def chooseEntropySol():
     if( q_l > Q):
@@ -112,11 +130,10 @@ def chooseEntropySol():
 ##
 ##
 
-def plotAnalyticalSolution():
+def plotAnalyticalSolution(t, plot):
     sol_r = np.zeros(len(xs))
     sol_q = np.zeros(len(xs))
 
-    t = 1.5
     i = 0
     for x in xs:
         if x < lambda1(r_l, q_l) * t:
@@ -135,16 +152,46 @@ def plotAnalyticalSolution():
             sol_r[i] = r_r
             sol_q[i] = q_r
             i += 1
+    if plot == True:
+        plt.plot(xs, sol_r,  label=r"$\rho$", color = "teal")
+        plt.plot(xs, sol_q,  label=r"$q$", color = "goldenrod")
+        plt.title(r"$ u(x, t = {} ) $".format(t))
+        plt.xlabel("x")
+        plt.ylabel("u")
+        plt.legend()
+        plt.show()
+    return sol_r, sol_q
 
-    plt.plot(sol_r, 'r', label=r"$\rho$")
-    #plt.plot(sol_q, 'b', label=r"$q$")
+def plot_xtSol():
+    sol_xtRho = np.zeros((len(ts), len(xs)))
+    sol_xtQ = np.zeros((len(ts), len(xs)))
+    j = 0
+    X, T = np.meshgrid(xs, ts)
+
+    for t in ts:
+        sol_xtRho[j], sol_xtQ[j] = plotAnalyticalSolution(t, False)
+        j += 1
+
+    plt.contourf(X, T, sol_xtRho, cmap =  "GnBu", levels=20)
+    plt.title(r"$ \rho(x,t) $")
+    plt.colorbar()
     plt.xlabel("x")
-    plt.ylabel("u")
-    plt.legend()
+    plt.ylabel("t")
+    plt.show()
+
+    plt.contourf(X, T, sol_xtQ, cmap = "YlOrBr", levels=20 )
+    plt.title(r"$ q(x,t) $")
+    plt.colorbar()
+    plt.xlabel("x")
+    plt.ylabel("t")
     plt.show()
 
 print("r_l =", r_l)
-print("r_m =", r_m[0])
+#print("r_m =", r_m[0])
 print("r_r =", r_r)
 print(chooseEntropySol())
-plotAnalyticalSolution()
+
+
+plotInitialValues()
+plotAnalyticalSolution(0.7, True)
+plot_xtSol()

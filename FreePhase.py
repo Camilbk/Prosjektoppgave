@@ -1,5 +1,7 @@
 import numpy as np
 from matplotlib import pyplot as plt
+plt.rcParams.update({
+    "font.size":15})
 
 # FREE PHASE
 # r_t + (rv)_x = 0
@@ -11,8 +13,8 @@ V = 5   # max speed
 vf = lambda rho: (1-rho/R)*V
 
 # initial condition
-rho_l = 0.2
-rho_r = 0.9
+rho_l = 0.3
+rho_r = 0.6
 
 # Shock speed
 s = (rho_r*vf(rho_r) - rho_l*vf(rho_l))/(rho_r - rho_l)
@@ -37,7 +39,7 @@ def plotInitialValues():
             i += 1
 
     plt.plot(xs, sol_rho, 'r', label=r"$\rho$", color="teal")
-    plt.title("Inital values " + r"$\rho_l = {}, \rho_r = {} $".format(rho_l, rho_r))
+    plt.title("Inital values "+ r"$\rho(x,0): $" + r"$\rho_l = {}, \rho_r = {} $".format(rho_l, rho_r))
     plt.xlabel("x")
     plt.ylabel("u")
     plt.legend()
@@ -84,31 +86,15 @@ def plot_xtSol():
         sol_xt[j] = plotAnalyticalSolution(t, False)
         j += 1
 
-    #plt.imshow(sol_xt, extent=[-1, 1, 0, 1])
-    plt.contourf(X, T, sol_xt, cmap= "GnBu")
+    plt.contourf(X, T, sol_xt, cmap= "GnBu", levels=20 )
     plt.title(r"$ \rho(x,t) $")
     plt.colorbar()
     plt.xlabel("x")
     plt.ylabel("t")
-    #plt.legend()
     plt.show()
 
 
-#plotInitialValues()
-#plotAnalyticalSolution(0.5, True)
-#plot_xtSol()
+plotInitialValues()
+plotAnalyticalSolution(0.5, True)
+plot_xtSol()
 
-
-def plotRarefactionWave():
-
-    plotInitialValues()
-    plotAnalyticalSolution(0.2, True)
-    plot_xtSol()
-
-def plotShockWave():
-
-    plotInitialValues()
-    plotAnalyticalSolution(0.5, True)
-    plot_xtSol()
-
-plotShockWave()
