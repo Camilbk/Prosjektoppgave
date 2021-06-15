@@ -1166,7 +1166,7 @@ Now we will demonstrate two examples, one with a shock and another with rarefact
          \centering
          \includegraphics[width=\textwidth]{Figures/Model/SysRarefacQ.png}
      \end{subfigure}
-        \caption{The evolution of a solution with initial values $\rho_l = 0.8, \rho_r = 0.2$, seen to the left. After $t = 0.2$, we have the middle figure. A full solution in the $x,t$-plane can be seen to the right.$R = 1, Q = 0.5$}
+        \caption{The evolution of a solution with initial values $u_l = (0.8, 1), u_r = (0.2, 0.4)$, seen to the top left. After $t = 0.4$, we have the top right figure. In the $(x,t)$-plane, we have bottom left for $\rho(x,t)$ and bottom right for $q(x,t)$.$R = 1, Q = 0.5$.}
         \label{fig:ExampleSysRarefaction}
 \end{figure} \begin{figure}[H]
      \centering
@@ -1187,7 +1187,7 @@ Now we will demonstrate two examples, one with a shock and another with rarefact
          \centering
          \includegraphics[width=\textwidth]{Figures/Model/SysShockQ.png}
      \end{subfigure}
-        \caption{The evolution of a solution with initial values $\rho_l = 0.2, \rho_r = 0.9$, seen to the left. After $t = 0.5$, we have the middle figure. A full solution in the $x,t$-plane can be seen to the right. $R = 1, Q = 0.5$}
+        \caption{The evolution of a solution with initial values $u_l = (0.3, 0.7), u_r = (0.8, 0.4)$, seen to the top left. After $t = 0.7$, we have the top right figure. In the $(x,t)$-plane, we have bottom left for $\rho(x,t)$ and bottom right for $q(x,t)$.$R = 1, Q = 0.5$.}
         \label{fig:ExampleSysShock}
 \end{figure}
 \begin{figure}[H]
@@ -1207,11 +1207,14 @@ Now we will demonstrate two examples, one with a shock and another with rarefact
      \end{subfigure}
      \begin{subfigure}[b]{0.35\textwidth}
          \centering
-         \includegraphics[width=\textwidth]{Figures/ModelSysContactsQ.png}
+         \includegraphics[width=\textwidth]{Figures/Model/SysContactsQ.png}
      \end{subfigure}
-        \caption{The evolution of a solution with initial values $\rho_l = 0.2, \rho_r = 0.9$, seen to the left. After $t = 0.5$, we have the middle figure. A full solution in the $x,t$-plane can be seen to the right. $R = 1, Q = 0.5$}
-        \label{fig:ExampleSysShock}
+        \caption{The evolution of a solution with initial values $u_l = (0.4, 0.5 ), u_r = (0.8, 0.2)$, seen to the top left. After $t = 0.7$, we have the top right figure. In the $(x,t)$-plane, we have bottom left for $\rho(x,t)$ and bottom right for $q(x,t)$.$R = 1, Q = 0.5$}
+        \label{fig:ExampleSysContact}
 \end{figure}
+The Figure \ref{fig:ExampleSysRarefaction} shows a rarefaction solution in the congested phase. This example corresponds with Figure \ref{Fig:SolRPRarefDiscCongestedPhase} and has the resulting equation $u_3(x,t)$ as seen in (\ref{Eq:correspondingSolu3u4}). From this Figure \ref{fig:ExampleSysRarefaction} we see as we expect, given the initial values at the top left, two slow rarefactions for $\rho$ and $q$ followed by the fast contact. As in the free phase the slope is the rarefaction wave and it moves backwards as time goes. 
+The Figure \ref{fig:ExampleSysShock} shows a shock solution in the congested phase. This example corresponds with Figure \ref{Fig:SolRPShockDiskCongestedPhase} and has the resulting equation $u_1(x,t)$ as seen in (\ref{Eq:correspondingSolu1u2}). 
+The Figure \ref{fig:ExampleSysContact} shows a double contact solution in the congested phase. This example corresponds with Figure \ref{Fig:SolRPDiscCongestedPhase} and has the resulting equation $u_1(x,t)$ as seen in (\ref{Eq:u_5}). 
 
 \newpage
 \subsection{The Riemann Problem for the full model}
