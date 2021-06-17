@@ -17,7 +17,10 @@ plt.rcParams.update({
 # parameters:
 R = 1   # max density
 V = 5   # max speed
+V_c = 0.5
 Q = 0.5 # wide jam param.
+vf = lambda rho: (1-rho/R)*V
+vc = lambda rho,q: (1-rho/R)*q/rho
 
 xs = np.linspace(-1,1,1000)
 ts = np.linspace(0,1, 1000)
@@ -26,6 +29,8 @@ ts = np.linspace(0,1, 1000)
 lambda1 = lambda r,q: (2/R - 1/r)*(Q-q) - Q/R
 lambda2 = lambda r,q: q/r*(1-r/R)
 
+# Speed of phase boundary
+Lambda = lambda r_l,r_r, q_l, q_r: (r_l*vf(r_l) - r_r*vc(r_r, q_r))/(r_l - r_r)
 
 # Rarefaction
 #w_r = lambda r, q, xi: (R*(r*xi - q + 2*Q) -Q*r)/(2*(q- 2*Q + R/r*(Q-q)))
@@ -33,27 +38,30 @@ w_r = lambda r, q, xi: ( R*(r*xi - q +Q) + Q*r)/(2*(Q-q))
 w_q = lambda r, q, xi: R/2*( (q-Q)/r - xi ) +Q/2
 
 # Initial values, u_l, u_r
-r_l = 0.3
-q_l = 0.7
+r_l = 0.08
+q_l = 0.38
 
-r_r = 0.8
-q_r = 0.4
+r_m1 = 0.25
+q_m1 = 0.38
 
-r_m = 0.92
-q_m = 1.11
+r_m2 = 0.68
+q_m2 = 0.16
+
+r_r = 0.9
+q_r = 0.65
+
 
 def plotInitialValues():
     sol_r = np.zeros(len(xs))
     sol_q = np.zeros(len(xs))
 
-    t = 0
     i = 0
     for x in xs:
-        if x < lambda1(r_l, q_l)*t:
+        if x < 0:
             sol_r[i] = r_l
             sol_q[i] = q_l
             i += 1
-        elif x > lambda2(r_r, q_r)*t:
+        elif x > 0:
             sol_r[i] = r_r
             sol_q[i] = q_r
             i += 1
@@ -69,84 +77,38 @@ def plotInitialValues():
 
 
 
-def findMiddleState(plot):
-    r1s = np.linspace(0.01, 1, 1000)
-    r2s = np.linspace(0.01, 0.9, 1000)
-    # wave curves in rho, q
-    q1 = lambda r: ((q_l - Q) / r_l) * r + Q  # 1st family wave
-    q2 = lambda r: (q_r / r_r) * ((R - r_r) / (R - r)) * r  # 2nd family wave
-    # finding smallest point
-    idx = np.argwhere(np.diff(np.sign(q1(r1s) - q2(r2s)))).flatten()
-    print(np.sign(q1(r1s) - q2(r2s)))
-    r_m = r2s[idx]
-    q_m = q1(r_m)
-    if (plot):
-        plt.plot(r1s, q1(r1s), '-',  color = "teal")
-        plt.plot(r2s, q2(r2s), '-', color = "goldenrod")
-        plt.plot(r_l, q_l, 'ro')
-        plt.annotate(r"$u_l$", (r_l, q_l+.05))
-        plt.plot(r_m, q_m, 'ro')
-        plt.annotate(r"$u_m$", (r_m, q_m+0.05))
-        plt.plot(r_r, q_r, 'ro')
-        plt.annotate(r"$u_r$", (r_r, q_r+0.05))
-        plt.xlabel(r"$\rho$")
-        plt.ylabel("q")
-        plt.title(r"$u(\rho, q)$")
-        plt.show()
-    return r_m, q_m
 
-def findMiddleState2():
-    a = (q_l - Q)/r_l
-    print("a: ", a)
-    b = (R-r_r)*q_r/r_r
-    print("b: ", b)
-
-
-
-
-#findMiddleState2()
-# Middle state u_m:
-#r_m, q_m = findMiddleState(plot=False)
-
-
-def chooseEntropySol():
-    if( q_l > Q):
-        if(r_l > r_m):
-            return "Rarefaction"
-        else:
-            return "Shock"
-    else:
-        if (r_l > r_m):
-            return "Shock"
-        else:
-            return "Rarefaction"
-
-##            ANALYTICAL SOLUTION
+##            ANALYTICAL SOLUTION, u_l in Free and u_r in Cong
 ##
-##            u_l    for  x < lambda1 (u_l) t
-## u(x,t) =    w     for  lambda1(u_l)t < x < lambda1 (u_m)t
-##            u_m    for  lambda1(u_m)t < x < lambda2(u_r)t
+##            u_l    for  x < Lambda (u_l) t
+## u(x,t) =   u_m1   for  Lambda(u_l)t < x < lambda1 (u_m1)t
+##            w1     for  lambda1(u_m1)t < x < lambda1(u_m2)t
+##            u_m2   for  lambda1(u_m2)t < x < lambda2(u_r)t
 ##            u_r    for  x > lambda2(u_r)t
 ##
 ##
 
-def plotAnalyticalSolution(t, plot):
+def plotAnalyticalSolutionFreeToCong(t, plot):
     sol_r = np.zeros(len(xs))
     sol_q = np.zeros(len(xs))
 
     i = 0
     for x in xs:
-        if x < lambda1(r_l, q_l) * t:
+        if x < Lambda(r_l, r_m1, q_l, q_m1) * t:
             sol_r[i] = r_l
             sol_q[i] = q_l
             i += 1
-        elif (lambda1(r_l, q_l) * t < x) and (x < lambda1(r_m, q_m) * t):
-            sol_r[i] = w_r(r_l, q_l, x/t)
-            sol_q[i] = w_q(r_l, q_l, x/t)
+        elif (Lambda(r_l, r_m1, q_l, q_m1) * t < x) and (x < lambda1(r_m1, q_m1) * t):
+            sol_r[i] = r_m1
+            sol_q[i] = q_m1
             i += 1
-        elif (lambda1(r_m, q_m) * t < x) and (x < lambda2(r_r, q_r) * t):
-            sol_r[i] = r_m
-            sol_q[i] = q_m
+        elif (lambda1(r_m1, q_m1) * t < x) and (x < lambda1(r_m2, q_m2) * t):
+            sol_r[i] = w_r(r_m1, q_m1, x / t)
+            sol_q[i] = w_q(r_m1, q_m1, x / t)
+            i += 1
+        elif (lambda1(r_m2, q_m2) * t < x) and (x < lambda2(r_r, q_r) * t):
+            sol_r[i] = r_m2
+            sol_q[i] = q_m2
             i += 1
         elif x > lambda2(r_r, q_r) * t:
             sol_r[i] = r_r
@@ -162,14 +124,14 @@ def plotAnalyticalSolution(t, plot):
         plt.show()
     return sol_r, sol_q
 
-def plot_xtSol():
+def plot_xtSolFreeToCong():
     sol_xtRho = np.zeros((len(ts), len(xs)))
     sol_xtQ = np.zeros((len(ts), len(xs)))
     j = 0
     X, T = np.meshgrid(xs, ts)
 
     for t in ts:
-        sol_xtRho[j], sol_xtQ[j] = plotAnalyticalSolution(t, False)
+        sol_xtRho[j], sol_xtQ[j] = plotAnalyticalSolutionFreeToCong(t, False)
         j += 1
 
     plt.contourf(X, T, sol_xtRho, cmap =  "GnBu", levels=20)
@@ -189,9 +151,12 @@ def plot_xtSol():
 print("r_l =", r_l)
 #print("r_m =", r_m[0])
 print("r_r =", r_r)
-print(chooseEntropySol())
+#print(chooseEntropySol())
 
 
 plotInitialValues()
-plotAnalyticalSolution(0.7, True)
-plot_xtSol()
+plotAnalyticalSolutionFreeToCong(0.7, True)
+plot_xtSolFreeToCong()
+
+
+

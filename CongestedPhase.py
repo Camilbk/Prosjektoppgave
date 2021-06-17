@@ -29,27 +29,26 @@ w_r = lambda r, q, xi: ( R*(r*xi - q +Q) + Q*r)/(2*(Q-q))
 w_q = lambda r, q, xi: R/2*( (q-Q)/r - xi ) +Q/2
 
 # Initial values, u_l, u_r
-r_l = 0.4
-q_l = 0.5
+r_l = 0.8
+q_l = 1
 
-r_r = 0.8
-q_r = 0.2
+r_r = 0.2
+q_r = 0.4
 
-r_m = 0.91
-q_m = 0.5
+r_m = 0.3
+q_m = 0.69
 
 def plotInitialValues():
     sol_r = np.zeros(len(xs))
     sol_q = np.zeros(len(xs))
 
-    t = 0
     i = 0
     for x in xs:
-        if x < lambda1(r_l, q_l)*t:
+        if x < 0:
             sol_r[i] = r_l
             sol_q[i] = q_l
             i += 1
-        elif x > lambda2(r_r, q_r)*t:
+        elif x > 0:
             sol_r[i] = r_r
             sol_q[i] = q_r
             i += 1
@@ -189,5 +188,5 @@ print(chooseEntropySol())
 
 
 plotInitialValues()
-plotAnalyticalSolution(0.7, True)
+plotAnalyticalSolution(0.4, True)
 plot_xtSol()
