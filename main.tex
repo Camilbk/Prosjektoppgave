@@ -1380,7 +1380,9 @@ In order to determine which behaviour we will see when travelling from one phase
      $ \Lambda( \rho) < \lambda(\rho)$, for $\check R < \rho < \rho_r$, then we will not have a middle state $u_{m_1}$ and will travel straight to $u_r$ on a shock-like phase transition.
 \end{enumerate}
 
-The argument for case $1.$ and $2.$ still holds for case $3.,$ and $4.$ . However, as the phase boundary may hit the congested phase for a larger $\rho$ than in the previous cases, we cannot guarantee that we first see a phase transition with speed $\Lambda$ followed by a first family wave $\lambda$, as in case $2b)$. Thus in case $3.$ we will have three scenarios, where one might be a compound wave. This compound wave is similar to what we see in scalar cases when using convex envelopes. We get a part where the speed is not growing $\Lambda(u_l)$ to $\Lambda(u_m)$, and the place where the two speeds match, at $\Lambda(u_m) = \lambda_1(u_m)$, we reconnect to the first family wave and continue along that path.  In $4.$, going from $u_l \in \Omega_c$ to $\Omega_f$ we get the same result as in $1b)$ a single phase transition acting as a shock. For case $4.$ we use the argument from $1b)$, and see that in this case we only have one possible solution.
+%The argument for case $1.$ and $2.$ still holds for case $3.,$ and $4.$ . 
+\textcolor{red}{In the $(\rho v, \rho)$-plane, the RH speed of the phase boundary is the slope of the segment connecting $u_l$ to $u_r$}
+However, as the phase boundary may hit the congested phase for a larger $\rho$ than in the previous cases, we cannot guarantee that we first see a phase transition with speed $\Lambda$ followed by a first family wave $\lambda$, as in case $2b)$. Thus in case $3.$ we will have three scenarios, where one might be a compound wave. This compound wave is similar to what we see in scalar cases when using convex envelopes. We get a part where the speed is not growing $\Lambda(u_l)$ to $\Lambda(u_m)$, and the place where the two speeds match, at $\Lambda(u_m) = \lambda_1(u_m)$, we reconnect to the first family wave and continue along that path.  In $4.$, going from $u_l \in \Omega_c$ to $\Omega_f$ we get the same result as in $1b)$ a single phase transition acting as a shock. For case $4.$ we use the argument from $1b)$, and see that in this case we only have one possible solution.
    
 In the $(x,t)$-plane we have the following waves shown in Figure \ref{fig:PhTSolInXT}. The left shows the cases $1a)$ and $3a)$, and also the case $2b)$ if one reverts the $x$-axis and letting the phase-transition come first. The middle shows the cases $1b), 2a) \text{and} 3c)$. Where as the only instance we have a compound wave, the right figure is the case of $3b)$. 
 \begin{figure}
@@ -1420,43 +1422,92 @@ We can now state the solutions above for $u(x,t)$.
 \end{align}
 
 Looking back at one of the requirements for the full model, was that we would not allow this solution by any $2 \times 2$-system of conservation laws. In the $2 \times 2$ system, we had a at most two waves in a solution, in this case we can have three waves in our solution, eg. a phase transition, rarefaction and a $2$-contact. 
-\textcolor{red}{In the $(\rho v, \rho)$-plane, the RH speed of the phase boundary is the slope of the segment connecting $u_l$ to $u_r$}
-Remark: If we allow $V_f = V_c$, we stated earlier in section $3.2$ that this will lead to non-well-posedness of the Riemann problem. To see this, let $u_l = \hat u_l \in \Omega_c$, and $u_r \in \Omega_c$. As $V_c = V_f$, and  $u_l = \hat u_l = \check u_l \in \Omega_f$. Now, according to the solution above, we can either solve this by a single $2$-contact from $\hat u_l$ to $u_r$, or by a phase transition from $\check u_l$ to $\hat u_l$ followed by a $2$-contact from $\hat u_l$ to $u_r$.
+\begin{wrapfigure}[13]{r}{0.29\textwidth}
+   \input{Figures/Model/NotWellPosed}
+   \caption{$V_f = V_c:$ A not well-posed solution to the Riemann problem.}
+   \label{Fig:NotWellPosed}
+\end{wrapfigure}
+Remark: If we allow $V_f = V_c$, we stated earlier in section $3.2$ that this will lead to non-well-posedness of the Riemann problem. To see this, let $u_l = \hat u_l \in \Omega_c$, and $u_r \in \Omega_c$, see Figure \ref{Fig:NotWellPosed}. As $V_c = V_f$, and  $u_l = \hat u_l = \check u_l \in \Omega_f$. Now, according to the solution above, we can either solve this by a single $2$-contact from $\hat u_l$ to $u_r$, or by a phase transition from $\check u_l$ to $\hat u_l$ followed by a $2$-contact from $\hat u_l$ to $u_r$.
+One should also note that if we are in the case of $1.$ or $2.$ and the states $u_l \in W_1(u_r)$, then we will not see a $2$-contact in the congested phase. The reason for this, is that above the lover boundary wave curve, we can reach all points $u_r \in \Omega_c$ from $u_l \in \Omega_f$. This is not the case, as we have seen, when $u_l \in \Omega_f$ is below the lower boundary wave curve. We can only reach the middle state $q_m(\rho)$, and then we need to travel to a point $u_{m_2} \in \Omega_c$ from where we can take a $2$-contact up to $u_r$. 
 
-\begin{tikzpicture}
-% coordinates
-    \filldraw[fill=black!2, draw=black!50] plot [tension = 1] coordinates { (0.5,1.25) (2,2) (2,0.2) (0.38, 0.81) (0.5,1.25)};
-    \draw[->] (0,-0.2) -- (0,2.3) node[anchor=south east] {$q$};
-   
-    \draw[magenta!50] (0,0) -- (0.2,1.25) node[anchor = south] {$V_f$};
-    
-    \filldraw[black] (0.42,0.82) circle (0.6pt) node[anchor = north west]{$u_r$} ;
-    \filldraw[black] (0.47,1.22) circle (0.6pt) node[anchor = north west]{$\hat u_l$} ;
-    \filldraw[black] (0.17,1.22) circle (0.6pt) node[anchor = north]{$\check u_l$} ;
-    % \node at (1,1) {$\Omega_c$};
-     \draw[->] (-0.2,0) -- (2.3,0) node[anchor=north west] {$\rho$};
-    % contact disk
-    \draw[line width=0.45mm, orange!50, domain=0.35:0.47]  plot[id=x] function{(x/0.47)*(2-0.47)/(2-x)*1.2};
-    % \draw[-][black!50] (0, 0.98) -- (2, 0.2) node[anchor=south west] {$q_m(\rho)$} ;
-    \node at (2,-0.2) {$R$};
-     \node at (-0.2,2) {$Q_1$};
-     \node at (-0.2,0.2) {$Q_2$};
-     \node at (-0.2,1) {$Q$};
-     \draw[loosely dotted] (0,1) -- (2,1);
-     \draw[loosely dotted] (0,2) -- (2,2);
-     \draw[loosely dotted] (0,0.2) -- (2,0.2);
-     %\node at (1.2,-0.5) {$(3a)$};
-     % rarefactions and shocks
-    %\draw[lime] (1.05, 1.33) -- (2, 1.6) ;
-    %\draw[<-][cyan!50] (0.42, 1.19) -- (1, 1.33) ;
-    
-    %\draw[->][lime] (1.48,0.4)  -- (2, 0.2) ;
-    \draw[line width=0.35mm, yellow] (0.17,1.22) -- (0.47,1.22) ;
-     
-\end{tikzpicture}
+We have now proved Proposition $3.1$ in \cite{Colombo2003}. We conclude this solution of the phase transition model if initial data in separate phases. 
 
+Now we will demonstrate three examples, $1a), 2a$) and $3b)$. 
+\begin{figure}[H]
+     \centering
+     \begin{subfigure}[t]{0.35\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/Sys1aIV.png}
+     \end{subfigure}
+     \begin{subfigure}[t]{0.35\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/Sys1aAtTime.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.35\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/Sys1aRho.png}
+     \end{subfigure}
+     \begin{subfigure}[b]{0.35\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/Sys1aQ.png}
+     \end{subfigure}
+        \caption{The evolution of a solution with initial values $u_l = (0.79, 0.9), u_r = (0.11, 0.56)$, seen to the top left. After $t = 0.2$, we have the top right figure. In the $(x,t)$-plane, we have bottom left for $\rho(x,t)$ and bottom right for $q(x,t)$. $R = 1, Q = 0.5, V = 5, V_c = 0.5$.}
+        \label{fig:Example1a}
+\end{figure} \begin{figure}[H]
+     \centering
+     \begin{subfigure}[t]{0.35\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/Sys2aIV.png}
+     \end{subfigure}
+     \begin{subfigure}[t]{0.35\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/Sys2aAtTime.png}
+     \end{subfigure}
+     \hfill 
+     \begin{subfigure}[b]{0.35\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/Sys2aRho.png}
+     \end{subfigure}
+     \begin{subfigure}[b]{0.35\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/Sys2aQ.png}
+     \end{subfigure}
+        \caption{The evolution of a solution with initial values $u_l = (0.11, 0.55), u_r = (0.8, 0.2)$, seen to the top left. After $t = 0.7$, we have the top right figure. In the $(x,t)$-plane, we have bottom left for $\rho(x,t)$ and bottom right for $q(x,t)$. 
+        $R = 1, Q = 0.5, V = 5, V_c = 0.5$.}
+        \label{fig:Example2a}
+\end{figure}
+\begin{figure}[H]
+     \centering
+     \begin{subfigure}[t]{0.35\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/Sys3bIV.png}
+     \end{subfigure}
+     \begin{subfigure}[t]{0.35\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/Sys3bAtTime.png}
+     \end{subfigure}
+     \hfill 
+     \begin{subfigure}[b]{0.35\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/Sys3bRho.png}
+     \end{subfigure}
+     \begin{subfigure}[b]{0.35\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/Sys3bQ.png}
+     \end{subfigure}
+        \caption{The evolution of a solution with initial values $u_l = (0.08, 0.38 ), u_r = (0.9, 0.65)$, seen to the top left. After $t = 0.7$, we have the top right figure. In the $(x,t)$-plane, we have bottom left for $\rho(x,t)$ and bottom right for $q(x,t)$. $R = 1, Q = 0.5, V = 5, V_c = 0.5$.}
+        \label{fig:Example3b}
+\end{figure}
+Figure \ref{fig:Example1a} is an example of the case $1a)$ as described above, and has the solution consisting of a rarefaction followed by a phase transition. Its solution is given by $u_{1a}(x,t)$ as seen in (\ref{Eq:Sol1}). The top left plot of Figure \ref{fig:Example1a} shows the initial value $u_l = (\rho_l, q_l)$. Top right shows the solution at $t = 0.2$. Here we can see a steep rarefaction wave for $\rho$, followed by a contect discontinuity. The rarfaction wave for $q$ is not so steep. This can be seen in the bottom two plots, where the rarefaction fan for $\rho$ is much finer than the fan for $q$.  The $2$-contact is fast, and will dissapear after $t=0.4$, as seen at the bottom two plots. This solution represents a car in a congested part of the road, and which gradually accelerates such that the space to nearby cars increase. This is what we see as the rarefaction wave. Then there is a change of pace, a phase transition, and we are in the free phase. 
 
-We have now proved Proposition $3.1$ in \cite{Colombo2003}.
+Figure \ref{fig:Example2a} the case $2a)$ as described above, and has the solution consisting of a rarefaction followed by a phase transition. It has the resulting equation $u_{1a}(x,t)$ as seen in (\ref{Eq:Sol1}).
+The Figure \ref{fig:Example2a} shows a shock solution in the congested phase. This example corresponds with Figure \ref{Fig:SolRPShockDiskCongestedPhase} and has the resulting equation $u_1(x,t)$ as seen in (\ref{Eq:Sol2}). Top left plot of Figure \ref{fig:ExampleSysShock} we see the initial values corresponding to the shock solution. The the top right plot, we can see the the evolution at time $t = 0.7$. Both the slow shock shock and the contact have a low speed.
+
+Lastly, the Figure \ref{fig:Example3b} shows the solution where we have a phase transition and attached to it, a rarefaction wave, followed by a $2$-contact. This is the case $3b)$ described above and has the same solution equation as $u_{1a}$ and $u_{2b}$, see \ref{Eq:Sol1}, \ref{Eq:Sol2}. The top left plot of Figure \ref{fig:Example3b} shows the initial values. After a time $t = 0.7$, we can see the solution in the top right plot. Starting with $q(x, t = 0.7)$ we see a phase transition happening at $x = -0.34$, and attached to it a rarefaction wave down to $u_m$. Here $q$ is decreasing, as we have seen in the Figure \ref{fig:PhTComplexCase1}. At $x = 0.05$ we see the contact discontinuity up to $u_r$. In the case of $\rho(x, t = 0.7)$, we see the phase transition by followed by a positive rarefaction wave. It may be more appropriate to call it a compression wave. This is in full agreement with what we expected from the Figure \ref{fig:PhTComplexCase1}, when we first described this compound wave. here we can see the value of $q$ is decreasing along the $1$-family wave curve, and increasing $\rho$ along the $1$-family wave curve. The two bottom plots show the full solution for $\rho(x,t)$ and $q(x,t)$.
+
+Moving along the first contact $q$ will remain constant, while $\rho$ can varies until it reaches $\rho_m$ . This can be seen in the top right plot. This means that $\rho(x,t)$ will have three distinct values, $\rho_l, \rho_m $ and $\rho_r$ while $q$ will only have two $q_l = q_m$ and $q_r$. This can also be seen in the two bottom plots, where $\rho(x,t)$ has three different values, whereas $q $ only have two. 
+
 
 \begin{comment}
 
