@@ -23,7 +23,7 @@ vf = lambda rho: (1-rho/R)*V
 vc = lambda rho,q: (1-rho/R)*q/rho
 
 xs = np.linspace(-1,1,1000)
-ts = np.linspace(0,1, 1000)
+ts = np.linspace(1,2, 1000)
 
 # Eigenvalues
 lambda1 = lambda r,q: (2/R - 1/r)*(Q-q) - Q/R
@@ -49,6 +49,32 @@ q_m2 = 0.16
 
 r_r = 0.9
 q_r = 0.65
+
+def initialValuesfor2a():
+    r_l = 0.11
+    q_l = 0.55
+
+    r_m1 = 0.22
+    q_m1 = 0.58
+
+    r_m2 = 0.22
+    q_m2 = 0.58
+
+    r_r = 0.7
+    q_r = 0.75
+
+def initialValuesForCompoundWave3b():
+    r_l = 0.08
+    q_l = 0.38
+
+    r_m1 = 0.25
+    q_m1 = 0.38
+
+    r_m2 = 0.68
+    q_m2 = 0.16
+
+    r_r = 0.9
+    q_r = 0.65
 
 
 def plotInitialValues():
@@ -95,22 +121,27 @@ def plotAnalyticalSolutionFreeToCong(t, plot):
     i = 0
     for x in xs:
         if x < Lambda(r_l, r_m1, q_l, q_m1) * t:
+
             sol_r[i] = r_l
             sol_q[i] = q_l
             i += 1
         elif (Lambda(r_l, r_m1, q_l, q_m1) * t < x) and (x < lambda1(r_m1, q_m1) * t):
+
             sol_r[i] = r_m1
             sol_q[i] = q_m1
             i += 1
         elif (lambda1(r_m1, q_m1) * t < x) and (x < lambda1(r_m2, q_m2) * t):
+
             sol_r[i] = w_r(r_m1, q_m1, x / t)
             sol_q[i] = w_q(r_m1, q_m1, x / t)
             i += 1
         elif (lambda1(r_m2, q_m2) * t < x) and (x < lambda2(r_r, q_r) * t):
+
             sol_r[i] = r_m2
             sol_q[i] = q_m2
             i += 1
         elif x > lambda2(r_r, q_r) * t:
+
             sol_r[i] = r_r
             sol_q[i] = q_r
             i += 1
@@ -160,3 +191,6 @@ plot_xtSolFreeToCong()
 
 
 
+print("Speed of phase boundary: " , Lambda(r_l, r_m1, q_l, q_m1))
+print("Speed of shock: " , lambda1(r_m2, q_m2))
+print("Speed of contact: ", lambda2(r_r, q_r))
