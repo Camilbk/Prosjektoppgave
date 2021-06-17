@@ -7,6 +7,7 @@
 \usepackage{amsmath}
 \usepackage{pgfplots}
 \usepackage{amsfonts}
+\usepackage{enumerate}
 \usepackage{mathtools}
 \usepackage[export]{adjustbox}
 \usepackage{wrapfig}
@@ -710,13 +711,13 @@ We conclude this solution (\ref{Eq:SolRPSystems}) to equation (\ref{Eq:RPFinal})
 %\subsection{Phase Transition Model}
 A phase transition model for traffic flow was proposed by Colombo in $2002$ \cite{Colombo2003}. The model is a coupled scalar conservation law with a $2 \times 2$ system of conservation laws, where the assumption is that traffic consists of two different \textit{phases}, a free flow phase and a congested flow phase. The argument for this model is deep qualitative difference between the phases, and thus cannot be modelled solely by a single equation. The coupling is achieved via a free boundary, which means that the interface between the two states is dynamically controlled by the system. A typical free boundary model is the melting of ice into liquid, where the boundary is controlled by the heat equation. 
 
-When modelling traffic we base our theory on the \textit{the hypothesis of the fundamental diagram}, where we assume that the fundamental diagram is either a result of a traffic model, or we use the diagram in the model \cite[p.~254]{KernerHelbing}. We require the form of the fundamental diagram to be related to our observations. In our experience, the higher the density of cars, the lower the average speed should be. Kerner suggests a fundamental diagram of the form seen in Figure \ref{fig:Kerner}, and presents experimental data that shows two distinct behaviours when the density reaches a certain $\rho_{max}^{(free)}$ also seen in Figure \ref{fig:Kerner}. The model Colombo presents, and we will investigate, gives a good explanation of the experimental results Kerner shows. Also looking at the Figure \ref{fig:Kerner}, we typically want a positive slope for the free phase, and a negative slope for the congested phase. In our model, we experience a capacity drop, a gap between the two curves, as Kerner defines it \cite[p.~254]{KernerHelbing}, when going from our free phase to the congested. And the model we will investigate is in good agreement with Kerners proposals. 
+When modelling traffic we base our theory on the \textit{the hypothesis of the fundamental diagram}, where we assume that the fundamental diagram is either a result of a traffic model, or we use the diagram in the model \cite[p.~254]{KernerHelbing}. We require the form of the fundamental diagram to be related to our observations. In our experience, the higher the density of cars, the lower the average speed should be. Kerner suggests in his work from $2002$ \cite{KernerHelbing} a fundamental diagram of the form seen in Figure \ref{fig:Kerner}, and presents experimental data that shows two distinct behaviours when the density reaches a certain $\rho_{max}^{(free)}$ also seen in Figure \ref{fig:Kerner}. The model Colombo presents, and we will investigate, gives a good explanation of the experimental results Kerner shows. Also looking at the Figure \ref{fig:Kerner}, we typically want a positive slope for the free phase, and a negative slope for the congested phase. In our model, we experience a capacity drop, a gap between the two curves, as Kerner defines it \cite[p.~254]{KernerHelbing}, when going from our free phase to the congested. And the model we will investigate is in good agreement with Kerners proposals. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.65\textwidth]{Figures/Model/Kerner.png}
     \caption{$a):$ A fundamental diagram satisfying needed properties. $b):$ Observations of real patterns in different countries \cite{KernerHelbing}. }
     \label{fig:Kerner}
-\end{figure} Kerner also suggests dividing the congested phase into two different phases; wide-moving jams and synchronised flow \cite[p.~256]{KernerHelbing}. In this model, we will be able to explain the underlying phases of congested flow based on the behaviour of the waves of the characteristic families. This traffic model is still inn full agreement with Kerners observations \cite{Colombo2003}.
+\end{figure} Kerner also suggests dividing the congested phase into two different phases; wide-moving jams and synchronised flow \cite[p.~256]{KernerHelbing}. In this model, we will be able to explain the underlying phases of congested flow based on the behaviour of the waves of the characteristic families. Thus, this traffic model is still inn full agreement with Kerners observations \cite{Colombo2003}.
 
 Colombo suggests using the classical LWR model for the free phase. The argument for choosing LWR is that it gives a good solution to the \textit{traffic light problem} \cite[p.~71]{TrafficLight}. In this phase, the assumption is that the density $\rho$ is determined by the speed of the cars, $v(\rho)$. However, as the car density increases, the assumption that the speed is a function only on the density is no longer acceptable, and the density-flow points are scattered in a cloud rather than along a line. We denote this phase as the congested flow, see Figure \ref{fig:Kerner}b). 
 %Imagine driving on a motorway, when there are few cars on the road you are free to change your velocity as you please. If you break, the car behind you will approach and the effect on the system will be an increase in density. If we instead choose to speed up, the distance between cars will increase and we have a lower density. However, when there many cars on the motorway, we are forced to reduce our speed to avoid collisions. And for a fixed density, we are allowed different speeds. A car jam can move at several different speeds, depending on factors like speed limit, the road it self, and the individual drivers. Also, different drivers tend to move at different speeds in the same velocities. We always have these few drivers who let a large portion of the road clear before picking up speed.  
@@ -734,7 +735,7 @@ Colombo proposes the following model for traffic flow:
 
 Here we have the density $\rho$ and velocity $v$ as independent variables. The variable $q$ is the weighted flow, where the original motivation stems from gas dynamics, where it describes linear momentum \cite{Bressan}. The two phases have different speed laws, but the maximal car density $R$, the maximal speed $V$ and the wide jam parameter $Q$ \cite{GaravelloMauro2006Tfon}, are all global and constant for the model. The wide wide jam parameter allows us to satisfy criteria $4.$ below, and will help us distinguish between the possible behaviours of the congested flow \cite{Colombo2003}. 
 
-Note that the road is spatially and temporally translation invariant,  as none of the expressions depends explicitly on space or time. Thus, the model is not able to predict when or where phase transitions may appear. However, we are able to predict under which circumstances a queue forms, given the left and right states \cite{Colombo2003}. Wave curve families will be invariant under these transformations, in this case a different scaling of $\rho$ and $q$. This is useful; instead of looking at a  large family of curves, we choose one representative sample of the family and understand this, and in principle, we have understood the whole system, as the rest of the curves are just scaled versions of the representative. As a consequence of translation invariance, Colombo suggests that if initial data is contained on a single phase, it will remain in the same phase for all times \cite{Colombo2003}. It is natural for us to first investigate the Riemann problem with initial data in the free phase, then look at the Riemann problem for the congested phase, and lastly combining the two and looking at initial data in different phases where we will experience a phase transition.
+Note that the road is spatially and temporally translation invariant,  as none of the expressions depends explicitly on space or time. For this reason, the model is not able to predict when or where phase transitions may appear. However, we are able to predict under which circumstances a queue forms, given the left and right states \cite{Colombo2003}. Wave curve families will be invariant under these transformations, in this case a different scaling of $\rho$ and $q$. This is useful; instead of looking at a  large family of curves, we choose one representative sample of the family and understand this, and in principle, we have understood the whole system, as the rest of the curves are just scaled versions of the representative. As a consequence of translation invariance, Colombo suggests that if initial data is contained on a single phase, it will remain in the same phase for all times \cite{Colombo2003}. It is natural for us to first investigate the Riemann problem with initial data in the free phase, then look at the Riemann problem for the congested phase, and lastly combining the two and looking at initial data in different phases where we will experience a phase transition.
 
 First, Colombo states a few necessary criteria in order to make the traffic flow realistic, see \cite{Colombo2002}:
 \begin{enumerate}
@@ -779,14 +780,14 @@ From the two example shock solutions, see Figures \ref{fig:ExampleBackwardsShock
 \begin{align*}
     & \rho(x,t) = \begin{cases}
     \rho_l & \text{for $x < f'(\rho_l)t$, } \\
-    (f')^{-1}(x/t)  &  \text{for $ f'(\rho_l)t \leq x \geq f'(\rho_r)t$,} \\
+    (f')^{-1}(x/t)  &  \text{for $ f'(\rho_l)t \leq x \leq f'(\rho_r)t$,} \\
      \rho_r & \text{for $x > f'(\rho_l)t$, }
     \end{cases} \\
     & f'(\rho) = V(1-\frac{2 \rho}{R}) , \quad  (f')^{-1}(\xi) = \frac{R}{2}(1-\frac{\xi}{V}). 
 \end{align*}
 An example of a rarefaction wave solution for the Riemann problem can be seen in Figure \ref{fig:ExampleRarefaction}. As in the case for shock, we can see the initial condition in the plot to the left. After a given time, the rarefaction will have smoothed out the sharp divide between the left and right state. A snapshot at $t = 0.2$ can be seen in the middle. Lastly, to the right we see the rarefaction fan for $t \in [0,1]$. This can also be thought as viewed from above, and here we can see the rarefaction will gradually smooth out $\rho$. 
 
-We conclude this solution of the phase transition model if initial data $\rho_l, \rho_r \in \Omega_f$.
+We conclude this solution of the phase transition model if initial data $\rho_l, \rho_r \in \Omega_f$. In this phase, we will not reach zero velocity and thus not be able to form a queue. We will only move to higher density areas still in the free phase. Therefore, this phase will not satisfy criteria $3.$ and $4.$ alone.  
 
 \begin{figure} \centering
     \input{Figures/Model/SolRPFreePhase}
@@ -869,14 +870,14 @@ We conclude this solution of the phase transition model if initial data $\rho_l,
 \end{figure}
 
 \subsection{The Riemann Problem for the Congested phase}\label{RPCongPh}
-When the density $\rho$ increases and velocity $v$ reaches the constant threshold $v(\check R) = V_c$, see Figure \ref{Fig:Velocity function}, the traffic enters the congested phase. Now we have the relation $ V > V_f > V_c $, and we define the domain for the congested phase as follows \begin{equation}
+When the density $\rho$ increases and velocity $v$ reaches the constant threshold $v(\check R) = V_c$, see Figure \ref{Fig:Velocity function}, the traffic enters the congested phase. As $\rho$ continues to increase as $V$ decreases we will eventually reach maximal car density $R$. Now we have the relation $ V > V_f > V_c $, and we define the domain for the congested phase as follows \begin{equation}
     \Omega_c = \Bigg\{(\rho, q) \in [0, \mathbb{R}] \times [0, \infty) : v_c(\rho, q) \leq V_c, \frac{q-Q}{\rho} \in \Bigg[\frac{Q_1 - Q}{R}, \frac{Q_2 - Q}{R} \Bigg]  \Bigg\},
     \label{Domain congested ph}
 \end{equation} again note that with this definition criteria $2.$ and $3.$ are fulfilled for the congested phase. 
-\begin{wrapfigure}[10]{l}{0.3\textwidth}
+\begin{wrapfigure}[12]{l}{0.3\textwidth}
     \input{Figures/Model/DomainOmegac}
 \end{wrapfigure}{}
-Where $Q_1$ and $Q_2$ determines the width of the domain $\Omega_{c}$, or the "cloud" in the congested phase \cite{Colombo2003}. Note $V_f > V_c$, as if $V_f = V_c$ the Riemann problem for the full model is not well-posed. We will return to this issue in the solution of the full model. Let $ u = (\rho, q)$, and we write the equations on system form
+Where $Q_1$ and $Q_2$ determines the width of the domain $\Omega_{c}$, or the "cloud" in the congested phase \cite{Colombo2003}. For now the definition of the domain $\Omega_c$ seems as taken out of thin air. However, as we will see later the boundary of the domain corresponds to the upper possible wave curve and the lower. This means that we only permit initial values within and on the boundary of the domain, the solution will remain within the domain for the values, including middle state. If we do not put restrictions on $q, \rho$ we would get problems with zero or negative momentum for some densities. In the $(\rho v, \rho)$-plane we would also see this happening with the lower wave curve dropping below zero for $\rho v$. This would mean either negative velocity or density, and neither make sense in our application. Physically, we can also justify this property. If we look at the area below the lover wave curve, this area will correspond, at least for low densities, driving at speeds well below the speed limit. Drivers rarely do this, as the goal is often to get from $a$ to $b$ quickly. The same argument holds for the area above the upper wave curve, here the drivers are above the speed limit.  Furthermore, note $V_f > V_c$, as if $V_f = V_c$ the Riemann problem for the full model is not well-posed. We will return to this issue in the solution of the full model. Let $ u = (\rho, q)$, and we write the equations on system form
 
 \begin{align*}
     \underbrace{\begin{pmatrix} \rho \\ q \end{pmatrix}_t}_{u_t} +  \underbrace{\begin{pmatrix} \rho v  \\ (q - Q) v \end{pmatrix}_x}_{f(u)_x} = 0, 
@@ -889,15 +890,16 @@ where $v = v_c(\rho,  q) = (1 - \frac{\rho}{R}) \frac{q}{\rho}$. The system has 
                             \frac{q(Q-q)}{\rho ^2} & \quad (2q -Q)(\frac{1}{\rho} - \frac{1}{R}) \end{pmatrix}.
 \end{equation*}
 
-We find the eigenvalues $\lambda_i$ and the eigenvectors $r_i$ of the Jacobian $df(u)$ by first computing $ det| df(u) - \lambda I| $ for the eigenvalues (\ref{Eq:EigenvaluesCongestedPhase}), and then solving $(df(u) - \lambda_i I) r_i  = 0$ by Gauss-Jordan elimination in order to find the eigenvectors $r_i$ (\ref{Eq:EigenvectorsCongPh}).
+We find the eigenvalues $\lambda_i$ and the eigenvectors $r_i$ of the Jacobian $df(u)$ by first computing $ det| df(u) - \lambda I| $ for the eigenvalues (\ref{Eq:EigenvaluesCongestedPhase}), and then solving $(df(u) - \lambda_i I) r_i  = 0$ by Gauss-Jordan elimination in order to find the eigenvectors $r_i$ (\ref{Eq:EigenvectorsCongPh}). The derivation is as follows 
 \begin{align*}
-    \left|\begin{matrix}
+   det| df(u) - \lambda I | &= \left|\begin{matrix}
 \frac{-q}{R}-\lambda & \frac{R-\rho}{R} \\
 \frac{-q^2+Qq}{\rho^2} & \frac{-QR+2Rq+Q\rho-2q\rho}{R\rho}-\lambda
-\end{matrix}\right| &= (\frac{-q}{R}-\lambda)( \frac{-QR+2RqQ\rho-2q\rho}{R\rho}-\lambda) - (\frac{R-\rho}{R})(\frac{-q^2+Qq}{\rho^2}) = 0 \\
+\end{matrix}\right| \\
+&= (\frac{-q}{R}-\lambda)( \frac{-QR+2RqQ\rho-2q\rho}{R\rho}-\lambda) - (\frac{R-\rho}{R})(\frac{-q^2+Qq}{\rho^2}) = 0 \\
  \lambda_1 &= \frac{-QR + Rq + Q\rho -2q\rho}{R\rho} \quad \quad  \lambda_2 = \frac{Rq - q\rho}{R\rho} 
 \end{align*}
-Inserting for $\lambda_1$ in the matrix above yeilds 
+Inserting for $\lambda_1$ in the matrix above and performing Gauss-Jordan elimination yeilds 
 \begin{align*}
    & \left(\begin{array}{cc|c}
 \frac{QR-Rq-Q\rho+q\rho}{R\rho} & \frac{R-\rho}{R} & 0 \\
@@ -931,10 +933,15 @@ Where the last line (\ref{Eq:GNLorLDcongPh}) can be shown by simply taking the g
 \end{align*}
 When investigating (\ref{Eq:GNLorLDcongPh}) we see that if $q \neq Q$ we have one genuinely non-linear first family and one linearly degenerate second family. However, if $ Q = q$, we have a linearly degenerate field also for the first wave. So the first wave is both genuinely non-linear and linearly degenerate. However, this will not be a problem as we will see later.
 
-We see we have a strictly hyperbolic system with $\lambda_1 < \lambda_2 = v_c$ as long as $\rho > 0, q, R \geq 0$, and we have achieved both criteria $1. $ and $2.$ for realistic traffic flow.  Also in this phase, no information travels faster than the cars. 
+We will now investigate if or when this system is strictly hyperbolic
+\begin{align*}
+    \lambda_2 - \lambda_1 &= \big(1 - \frac{\rho}{q}\big)\frac{q}{\rho} - \bigg(\big ( \frac{2}{R} - \frac{1}{\rho} )\big (Q- q) - \frac{Q}{R} \bigg) = \frac{q}{\rho} - \frac{q}{R}- \bigg( \frac{Q}{R} - \frac{2q}{R} - \frac{Q}{\rho} + \frac{q}{\rho}\bigg) \\
+                        &= \frac{q- Q }{R} + \frac{Q}{\rho} > 0 \quad \text{if $\rho \in (0,R)$, $q \geq 0$}
+\end{align*}
+We see we have a strictly hyperbolic system with $\lambda_1 < \lambda_2 = v_c$ as long as $\rho,q \geq 0, R, Q > 0$, and we have achieved both criteria $1. $ and $2.$ for realistic traffic flow.  Also in this phase, no information travels faster than the cars. 
 
 \paragraph{Rarefaction curves and contact discontinuities.}
-We continue by finding the wave curves for the genuinely non-linear case of the first family, we denote this rarefaction curve $q_1$. For the linearly degenerate second family we find a contact discontinuity, and denote it $q_2$. We assume $u_l$ is fixed and integrate the eigenvectors from $u_l$ to $u$ in the phase-plane. As we do the same for both families, we place the derivation side by side. 
+We continue by finding the wave curves for the genuinely non-linear case of the first family, we denote this rarefaction curve $q_1$. For the linearly degenerate second family we find a contact discontinuity, and denote it $q_2$. We assume $u_l$ is fixed and integrate the eigenvectors from $u_l$ to $u$ in the phase-plane. As we do the same procedure for both families, we place the derivation side by side to save space.  
 \begin{alignat*}{2}
     & \text{Rarefaction:}  && \text{Contact Discontinuity:} \\
     r_1 &= \begin{pmatrix} \rho \\ q - Q \end{pmatrix}, \quad\quad \quad\quad\quad \quad\quad\quad   r_2 &&= \begin{pmatrix} R - \rho \\ \frac{Rq}{\rho} \end{pmatrix}, \\ 
@@ -942,7 +949,7 @@ We continue by finding the wave curves for the genuinely non-linear case of the 
     \int_{q_l}^{q} \frac{1}{q-Q} dq &= \int_{\rho_l}^{\rho} \frac{1}{\rho} d\rho, \quad\quad\quad \quad\quad\quad \int_{q_l}^{q} \frac{1}{q} dq &&= \int_{\rho_l}^{\rho} \frac{R}{\rho(R - \rho)} d\rho, \\
     \frac{q-Q}{q_l -Q} &= \frac{\rho}{\rho_l}, \quad \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad  \frac{q}{q_l} &&= \frac{\rho( R- \rho_l)}{\rho_l(R-\rho)},
 \end{alignat*}
-This leads to the following wave curve
+This leads to the following wave curves
 \begin{align}
     & q_1 = \frac{q_l - Q}{\rho_l} \rho + Q, \quad \quad \textit{Rarefaction curve,}
     \label{Eq:RarefactionWCongestedPh} \\
@@ -950,7 +957,7 @@ This leads to the following wave curve
     \label{Eq:ContactDiscCongestedPh}
 \end{align}
 
-While we are investigating the rarefaction curves, we will find the expression in the $(x,t)$-plane. Recall from Chapter $2$, the assumptions on the system (\ref{Eq:SystemsAssumptions}). In our case, as we only have one rarefaction, we have 
+While we are investigating the rarefaction curve, we will find the expression in the $(x,t)$-plane. Recall from Chapter $2$, the assumptions on the system (\ref{Eq:SystemsAssumptions}). In our case, as we only have one rarefaction, we have 
 \begin{align}
     & \dot \omega(\xi) = r_1( \omega(\xi))  \quad \quad \quad \omega(\lambda_1(u_l)) = u_l \nonumber \\
     &\begin{pmatrix} \dot \rho(\xi) \\ \dot q(\xi) \end{pmatrix} = - \frac{R}{2-Q}\begin{pmatrix}  \rho \\ q - Q\end{pmatrix} \nonumber\\
@@ -965,7 +972,7 @@ where we have used the normalised eigenvector. A quick look at the expression fo
 \begin{equation}
     q(\xi) = \frac{R}{2}( \frac{1}{\rho_l}(q_l - Q) - \xi ) + Q/2 \label{Eq:q(xi)}
 \end{equation}
-Now we have an expression for $q(\xi)$ we continue with $\rho$
+Now we have an expression for $q(\xi)$ we continue with $\rho$, and insert $q(\xi)$ for $q$ in \ref{Eq:drho_dq_dXi}
 \begin{align*}
     \frac{d\rho}{R \rho} &= -\frac{d \xi}{2( \frac{R}{2}( \frac{1}{\rho_l}(q_l - Q) - \xi ) + Q/2 -Q) } = -\frac{d \xi}{R \big( \frac{(q_l - Q) }{\rho_l}- \xi \big) -Q) }\\
                 \rho(\xi) &= K \big( R (\rho_l \xi - q_l +Q) + \rho_l Q \big) \\
@@ -988,8 +995,8 @@ Then we insert for $v = v_c = (1- \frac{\rho}{R})\frac{q}{\rho}$, and after a mu
       q &= \frac{q_l - Q}{\rho_l} \rho + Q,  \quad \quad \textit{Shock curve.}
      \label{Eq:ShockCongPh}
 \end{align}
-The rarefaction curve (\ref{Eq:RarefactionWCongestedPh}) and shock curve (\ref{Eq:ShockCongPh}) coincides for the first family, and together with the contact discontinuity (\ref{Eq:ContactDiscCongestedPh}) we only have two solution curves in the phase-plane for the congested phase. In the $(\rho,q)$-plane the $1$-family are straight lines, while the $2$-family are convex.
-We still do not know the direction of the first family, and we still have both a shock and a rarefaction solution along the first wave family, and hence we continue with Lax entropy. 
+The rarefaction curve (\ref{Eq:RarefactionWCongestedPh}) and shock curve (\ref{Eq:ShockCongPh}) coincides for the first family, and together with the contact discontinuity (\ref{Eq:ContactDiscCongestedPh}) we only have two solution curves in the phase-plane for the congested phase. In the $(\rho,q)$-plane the $1$-family are straight lines, while the $2$-family is convex.
+We still do not know the direction of the first family, and we still have both a shock and a rarefaction solution along the first wave family, hence we continue with Lax entropy. 
 
 \paragraph{Lax entropy.}
 %\begin{align*}
@@ -1019,7 +1026,9 @@ Using the Lax entropy condition for the shock wave, along with the found directi
     \input{Figures/Model/LaxEntropy}
 \end{figure}
 
-Now, investigating what happens above the critical line $ q = Q$, see Figure \ref{Fig:LaxEntropy1CongestedPhase}. Due to the direction of $\lambda_1$ in combination with (\ref{Eq:LaxEntropyCongPh}) we get a shock when moving backwards from $u_l$. That means, when $q > Q$ , $\rho_l < \rho_r$ produce a shock, and $\rho_l > \rho_r$ produce a rarefaction . Below the critical line $q < Q$, see Figure \ref{Fig:LaxEntropy2CongestedPhase}, by applying the same argument we also get a shock moving backwards from $u_l$. That means, when $q < Q$ , $\rho_l < \rho_r$ produce a rarefaction, and $\rho_l > \rho_r$ produce a shock .The regions for shock and rarefaction on the first family wave curves are depicted in both figures, as well as the direction of increasing $\lambda_1$. Colombo summarised this result nicely in \cite{Colombo2002}.
+Now, investigating what happens above the critical line $ q = Q$, see Figure \ref{Fig:LaxEntropy1CongestedPhase}. Due to the direction of $\lambda_1$ in combination with (\ref{Eq:LaxEntropyCongPh}) we get a shock when moving backwards from $u_l$. That means, when $q > Q$ , $\rho_l < \rho_r$ produce a shock, and $\rho_l > \rho_r$ produce a rarefaction . Below the critical line $q < Q$, see Figure \ref{Fig:LaxEntropy2CongestedPhase}, by applying the same argument we also get a shock moving backwards from $u_l$. That means, when $q < Q$ , $\rho_l < \rho_r$ produce a rarefaction, and $\rho_l > \rho_r$ produce a shock .The regions for shock and rarefaction on the first family wave curves are depicted in both figures, as well as the direction of increasing $\lambda_1$. 
+\begin{comment}
+ Colombo summarised this result nicely in \cite{Colombo2002}.
 \begin{equation}
 \begin{aligned}
    & \begin{cases}
@@ -1037,7 +1046,7 @@ Now, investigating what happens above the critical line $ q = Q$, see Figure \re
     \text{Accelerating} \leftrightarrow \text{Shock,} 
     \end{cases}
     \label{LaxentropySummarised}
-\end{aligned} \end{equation} From the result above (\ref{LaxentropySummarised}), we have now acquired criteria $5.$ for realistic traffic flow, and it is allowed by the $(q-Q)v$-term in the model equation for congested traffic. 
+\end{aligned} \end{equation} From the result above (\ref{LaxentropySummarised}), we have now acquired criteria $5.$ for realistic traffic flow, and it is allowed by the $(q-Q)v$-term in the model equation for congested traffic. \end{comment}
 %From an experimental point of view we can now estimate the parameters $Q_1, Q_2$, and $Q$. 
 %We can also reformulate the solution curves in the $(\rho, \rho v)$-plane, for both the congested phase and free phase. 
 \paragraph{The Riemann Problem.}
@@ -1141,12 +1150,12 @@ where $\rho(x/t) = \rho(\xi)$ we found earlier, see (\ref{Eq:rho(xi)}), and $q(x
    \caption{First family is linearly degenerate. We have a 1-contact (red) followed by a 2-contact (orange).}
     \label{Fig:u_5}
 \end{wrapfigure}
-Where $u_1(x,t)$ and $u_2(x,t)$ correspond with Figure \ref{Fig:SolRPShockDiskCongestedPhase} and $u_3(x,t)$ and $u_4(x,t)$ correspond with Figure \ref{Fig:SolRPRarefDiscCongestedPhase}. 
+Here $u_1(x,t)$ and $u_2(x,t)$ correspond with Figure \ref{Fig:SolRPShockDiskCongestedPhase} and $u_3(x,t)$ and $u_4(x,t)$ correspond with Figure \ref{Fig:SolRPRarefDiscCongestedPhase}. 
 Recall the first family can be both genuinely nonlinear and linearly degenerate for $Q = q$. The first family will be linearly degenerate if and only if $u_l$ with $(\rho, q_l = Q)$ and thus a contact discontinuity.  If $u_r$ is on $q = Q$ then either it is the end of the first family contact discontinuity or the end of the second wave contact discontinuity which happens to be on $u_r(\rho, q_r = Q)$. The solution in this case can be seen in Figure \ref{Fig:u_5}, with corresponding solution (\ref{Eq:u_5}). See Figure \ref{Fig:SolRPDiscCongestedPhase} for the evolution of waves in the $(x,t)$-plane.
 
 We conclude this solution of the phase transition model if initial data $u_l = (\rho_l, q_l), u_r = (\rho_r, q_r) \in \Omega_c $
 
-Now we will demonstrate two examples, one with a shock and another with rarefaction.
+Now we will demonstrate three examples, one with a shock, another with rarefaction and lastly the double contact solution.
 \begin{figure}[H]
      \centering
      \begin{subfigure}[t]{0.35\textwidth}
@@ -1212,17 +1221,17 @@ Now we will demonstrate two examples, one with a shock and another with rarefact
         \caption{The evolution of a solution with initial values $u_l = (0.4, 0.5 ), u_r = (0.8, 0.2)$, seen to the top left. After $t = 0.7$, we have the top right figure. In the $(x,t)$-plane, we have bottom left for $\rho(x,t)$ and bottom right for $q(x,t)$.$R = 1, Q = 0.5$}
         \label{fig:ExampleSysContact}
 \end{figure}
-The Figure \ref{fig:ExampleSysRarefaction} shows a rarefaction solution in the congested phase. This example corresponds with Figure \ref{Fig:SolRPRarefDiscCongestedPhase} and has the resulting equation $u_3(x,t)$ as seen in (\ref{Eq:correspondingSolu3u4}). From this Figure \ref{fig:ExampleSysRarefaction} we see as we expect, given the initial values at the top left, two slow rarefactions for $\rho$ and $q$ followed by the fast contact. As in the free phase the slope is the rarefaction wave and it moves backwards as time goes. 
-The Figure \ref{fig:ExampleSysShock} shows a shock solution in the congested phase. This example corresponds with Figure \ref{Fig:SolRPShockDiskCongestedPhase} and has the resulting equation $u_1(x,t)$ as seen in (\ref{Eq:correspondingSolu1u2}). 
-The Figure \ref{fig:ExampleSysContact} shows a double contact solution in the congested phase. This example corresponds with Figure \ref{Fig:SolRPDiscCongestedPhase} and has the resulting equation $u_1(x,t)$ as seen in (\ref{Eq:u_5}). 
+The Figure \ref{fig:ExampleSysRarefaction} shows a rarefaction solution in the congested phase. This example corresponds with Figure \ref{Fig:SolRPRarefDiscCongestedPhase} and has the resulting equation $u_3(x,t)$ as seen in (\ref{Eq:correspondingSolu3u4}). From this Figure \ref{fig:ExampleSysRarefaction} we see as we expect, given the initial values at the top left, two slow rarefactions for $\rho$ and $q$ followed by the fast contact at the top right plot. As in the free phase the slope is the rarefaction wave and it moves backwards as time $t$ passes.  The two bottom plots in Figure \ref{Fig:SolRPRarefDiscCongestedPhase} shows the full solution in the $(x,t)$-plane, first for $\rho(x,t)$ to the left and then for $q(x,t)$ to he right. As expected we can see a rarefaction fan in both cases. One should also note the difference between the rarefaction fans for $\rho$ and $q$. The rarefaction fan to the bottom left, for $\rho$ is finer than the corresponding rarefaction fan for $q$. The slope for $\rho$ is larger than for $q$, as seen in the top right plot. The reason for this is $|\rho_l - \rho_m| > |q_l - q_m|$ which results in the density rarefacting more than the momentum. 
+The Figure \ref{fig:ExampleSysShock} shows a shock solution in the congested phase. This example corresponds with Figure \ref{Fig:SolRPShockDiskCongestedPhase} and has the resulting equation $u_1(x,t)$ as seen in (\ref{Eq:correspondingSolu1u2}). Top left plot of Figure \ref{fig:ExampleSysShock} we see the initial values corresponding to the shock solution. The the top right plot, we can see the the evolution at time $t = 0.7$. Both the slow shock shock and the contact have a low speed. 
+Lastly, the Figure \ref{fig:ExampleSysContact} shows a double contact solution in the congested phase. This example corresponds with Figure \ref{Fig:SolRPDiscCongestedPhase} and has the resulting equation $u_1(x,t)$ as seen in (\ref{Eq:u_5}). Recall the only way to see a solution where the first family also is a contact discontinuity is when $q_l = Q$. Here we have chosen the initial values in such a way, see the top left plot of Figure \ref{fig:ExampleSysContact}. Moving along the first contact $q$ will remain constant, while $\rho$ can varies until it reaches $\rho_m$ . This can be seen in the top right plot. This means that $\rho(x,t)$ will have three distinct values, $\rho_l, \rho_m $ and $\rho_r$ while $q$ will only have two $q_l = q_m$ and $q_r$. This can also be seen in the two bottom plots, where $\rho(x,t)$ has three different values, whereas $q $ only have two. 
 
 \newpage
 \subsection{The Riemann Problem for the full model}
-We will now combine the two sets of equations and solve the system including phase-transitions. If both $u_l, u_r \in \Omega_f$ then the solution is given in section \ref{RPFreePh}, and if $u_l, u_r \in \Omega_c$ then the solution is given in section \ref{RPCongPh}. Thus, in this section we will only deal with the cases $u_l \in \Omega_f, u_r \in \Omega_c$ and $u_l \in \Omega_c, u_r \in \Omega_f$.
+We will now combine the two sets of equations and solve the system including phase-transitions. If both $u_l, u_r \in \Omega_f$ then the solution is given in section \ref{RPFreePh}, and if $u_l, u_r \in \Omega_c$ then the solution is given in section \ref{RPCongPh}. Therefore, this section will only deal with the cases $u_l \in \Omega_f, u_r \in \Omega_c$ and $u_l \in \Omega_c, u_r \in \Omega_f$.
 
 %Entropy for phase transitions
-When introducing a phase transition to our model, we again have to deal with the lack of uniqueness in the Riemann problem as seen before. Colombo gives a entropy condition necessary for phase transitions in section 3 in \cite{Colombo2003}, and the requirement is as follows: If $u_l \in \Omega_f$ and $u_r \in \Omega_c$ then an \textit{admissible solution} to our traffic model (\ref{Eq:phase-transition}) is a self-similar function $u:[0, \infty) \times \mathbb{R} \mapsto \Omega_f \cup \Omega_c$ such that there exists a $\Lambda \in \mathbb{R}$ with 
-\begin{enumerate}
+When introducing a phase transition to our model, we again have to deal with the lack of uniqueness in the Riemann problem as seen before. Colombo gives an entropy condition necessary for phase transitions in section 3 in \cite{Colombo2003}, and the requirement is as follows: If $u_l \in \Omega_f$ and $u_r \in \Omega_c$ then an \textit{admissible solution} to our traffic model (\ref{Eq:phase-transition}) is a self-similar function $u:[0, \infty) \times \mathbb{R} \mapsto \Omega_f \cup \Omega_c$ such that there exists a $\Lambda \in \mathbb{R}$ with 
+\begin{enumerate}[i)]
     \item $u:(t, (-\infty,\Lambda t)) \subseteq \Omega_f $ and $u:(t, (\Lambda t, \infty)) \subseteq \Omega_c $ 
     \item the functions $u_l$ and $u_r$ respectively defined by \begin{align*}
         & u_l(t,x) = \begin{cases}
@@ -1240,8 +1249,8 @@ When introducing a phase transition to our model, we again have to deal with the
         \label{Eq:RH_PhT}
     \end{align} are satisfied for all $t \geq 0$.
 \end{enumerate}
-This definition looks like our derivation of the Rankine-Hugoniot condition in the start of Chapter $2$, which is reasonable, as one can think of the disjoint domains as being separated by a discontinuity. That enables us to use the same argument as we did in the derivation of the Rankine-Hugoniot condition. Thus, we can think of phase transitions of this type as having a shock-like behaviour. In order to make a full solution $u(x,t)$ for $u_l$ and $u_r$ in separate domains, we stitch together our previous results from the free- and congested phase together with the entropy condition. In this way, we are still able to preserve the Lax solutions and their properties at each side of the gap. Now this stitched solution is also a new solution. One should also note that $3.$ only has a requirement for $\rho$. The reason for this, is hat we only want to preserve the number of cars across phases, we do not want to conserve momentum. In proposition $3.1$, Colombo gives another requirement. For the full model "no $2 \times 2$ system of conservation laws may have as its Lax solutions those defines by this Riemann solver"\cite[p.~713]{Colombo2003}. This is a necessity, as if we could have solved the phase transition model by only using eg. the congested model, we would loose uniqueness. At the end of this section, we will give an example of why this is true.
-In order for  Now our goal is to find a solution of the form, for $u_l \in \Omega_f$ and $u_r \in \Omega_c$, with $u_m \in \Omega_c$
+This definition looks like our derivation of the Rankine-Hugoniot condition in the start of Chapter $2$, which is reasonable, as one can think of the disjoint domains as being separated by a discontinuity. That enables us to use the same argument as we did in the derivation of the Rankine-Hugoniot condition. Thus, we can think of phase transitions of this type as having a shock-like behaviour. In order to make a full solution $u(x,t)$ for $u_l$ and $u_r$ in separate domains, we stitch together our previous results from the free- and congested phase together with the entropy condition. In this way, we are still able to preserve the Lax solutions and their properties at each side of the gap, as seen in $i)$. Now this stitched solution is also a new solution $ii)$. One should also note that $iii)$ only has a requirement for $\rho$. The reason for this, is hat we only want to conserve the number of cars (density) across phases, we do not (necessarily) want to conserve momentum. In proposition $3.1$, Colombo gives another requirement. For the full model "no $2 \times 2$ system of conservation laws may have as its Lax solutions those defines by this Riemann solver"\cite[p.~713]{Colombo2003}. This is a necessity, as if we could have solved the phase transition model by only using eg. the congested model, we would loose uniqueness. At the end of this section, we will give an example of why this is true.
+Now our goal is to find a solution of the form, for $u_l \in \Omega_f$ and $u_r \in \Omega_c$, with $u_m \in \Omega_c$
 \begin{align}
     u(x,t) = \begin{cases}
         u_l & \text{ for $ x < \Lambda(u_l)t$}, \\
@@ -1265,7 +1274,7 @@ where starting in the left state $u_l \in \Omega_f$, we travel on a phase-transi
 \end{align}
 where starting in the left state $u_l \in \Omega_c$, we travel on a $1$-family wave $w_1(x/t)$ to $u_{m_1}$ $u_m \in \Omega_c$. From $u_m$ we take the $2$-contact to $u_{m_2} \in \Omega_c$. And lastly we have a phase-transition from $u_{m_2}$ to $u_r \in \Omega_f$. 
 
-Worth noting here, is that we need to determine the relationship between $\lambda_1$ and $\Lambda$, as we require a monotone increase for the entropy condition. Hence, the solutions (\ref{Eq:APrioriFreeToCong}), (\ref{Eq:APrioriCongToFree}), will change when investigating the specific problem. 
+Worth noting here, is that we need to determine the relationship between $\lambda_1$ and $\Lambda$, as we require a monotone increase for the entropy condition. Hence, the apriori solutions (\ref{Eq:APrioriFreeToCong}), (\ref{Eq:APrioriCongToFree}), will change when investigating the specific problem. 
 %\todo{If V_c = V_f}
 
 
@@ -1305,6 +1314,18 @@ We will first start by investigating the simplest case, where $u_l$ and $u_r$ li
   
 
 A priori one might expect $1b)$ and $2a)$ to produce in the first case a $1$-shock and then a shock-like phase transition, and in the last case a phase transition followed by a $1$-shock. We will now prove why this is not the case, and the correct order of $\lambda_1$ and $\Lambda$. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5cm]{example-image-a}
+    \caption{Placeholder for proof}
+    \label{fig:sampleDonotuse}
+\end{figure}
+
+\vspace{50pt}
+% --------------- PROOF HERE ------- 
+\begin{comment}
+
 \begin{equation}
     \Lambda(\rho) = \frac{\rho_l v_l - \rho v_c(\rho, q_m(\rho))}{\rho_l - \rho}.
     \label{Eq:PhaseBoundarySpeed}
@@ -1335,6 +1356,9 @@ For the case when $q > Q$ we need some more analysis of (\ref{Eq:ConditionOnLamb
   q > Q:  \quad \lambda_1(u_m) < \Lambda(u_m)
 \end{equation*}
 proving the cases $1.$ and $2.$ above.
+\end{comment}
+
+% -----------------------------------
 
 Now we will investigate what happens when we are below the extension of the lower first wave curve. Let $q_m(\rho) = Q + \rho/R(Q_2 - Q)$ be this lower boundary wave curve, and for simplicity let $u_r \in q_m(\rho)$.
 In order to determine which behaviour we will see when travelling from one phase to the other we define the following. As in \cite{Colombo2002}, let $\check R_c$ be the smallest density on $q_m(\rho) \in \Omega_c$. We first state the result, and give a proof at the end. 
@@ -1356,7 +1380,7 @@ In order to determine which behaviour we will see when travelling from one phase
      $ \Lambda( \rho) < \lambda(\rho)$, for $\check R < \rho < \rho_r$, then we will not have a middle state $u_{m_1}$ and will travel straight to $u_r$ on a shock-like phase transition.
 \end{enumerate}
 
-The argument for case $1.$ and $2.$ still holds for case $3.,$ and $4.$ . However, as the phase boundary may hit the congested phase for a larger $\rho$ than in the previous cases, we cannot guarantee that we first see a phase transition with speed $\Lambda$ followed by a first family wave $\lambda$, as in case $2b)$. Thus in case $3.$ we will have three scenarios, where one might be a composite wave. This compound wave is similar to what we see in scalar cases when using convex envelopes. We get a part where the speed is not growing $\Lambda(u_l)$ to $\Lambda(u_m)$, and the place where the two speeds match, at $\Lambda(u_m) = \lambda_1(u_m)$, we reconnect to he original flux function, in the case of the convex envelope, and continue along that path.  In $4.$, going from $u_l \in \Omega_c$ to $\Omega_f$ we get the same result as in $1b)$ a single phase transition acting as a shock. For case $4.$ we use the argument from $1b)$, and see that in this case we only have one possible solution.
+The argument for case $1.$ and $2.$ still holds for case $3.,$ and $4.$ . However, as the phase boundary may hit the congested phase for a larger $\rho$ than in the previous cases, we cannot guarantee that we first see a phase transition with speed $\Lambda$ followed by a first family wave $\lambda$, as in case $2b)$. Thus in case $3.$ we will have three scenarios, where one might be a compound wave. This compound wave is similar to what we see in scalar cases when using convex envelopes. We get a part where the speed is not growing $\Lambda(u_l)$ to $\Lambda(u_m)$, and the place where the two speeds match, at $\Lambda(u_m) = \lambda_1(u_m)$, we reconnect to the first family wave and continue along that path.  In $4.$, going from $u_l \in \Omega_c$ to $\Omega_f$ we get the same result as in $1b)$ a single phase transition acting as a shock. For case $4.$ we use the argument from $1b)$, and see that in this case we only have one possible solution.
    
 In the $(x,t)$-plane we have the following waves shown in Figure \ref{fig:PhTSolInXT}. The left shows the cases $1a)$ and $3a)$, and also the case $2b)$ if one reverts the $x$-axis and letting the phase-transition come first. The middle shows the cases $1b), 2a) \text{and} 3c)$. Where as the only instance we have a compound wave, the right figure is the case of $3b)$. 
 \begin{figure}
@@ -1395,7 +1419,44 @@ We can now state the solutions above for $u(x,t)$.
     \label{Eq:Sol2}
 \end{align}
 
-Looking back at one of the requiremens for the full model, was that we would nit allow this solution by any $2 \times 2$-system of conservayion laws. This follows the presence of $3$ waves in our solution. 
+Looking back at one of the requirements for the full model, was that we would not allow this solution by any $2 \times 2$-system of conservation laws. In the $2 \times 2$ system, we had a at most two waves in a solution, in this case we can have three waves in our solution, eg. a phase transition, rarefaction and a $2$-contact. 
+\textcolor{red}{In the $(\rho v, \rho)$-plane, the RH speed of the phase boundary is the slope of the segment connecting $u_l$ to $u_r$}
+Remark: If we allow $V_f = V_c$, we stated earlier in section $3.2$ that this will lead to non-well-posedness of the Riemann problem. To see this, let $u_l = \hat u_l \in \Omega_c$, and $u_r \in \Omega_c$. As $V_c = V_f$, and  $u_l = \hat u_l = \check u_l \in \Omega_f$. Now, according to the solution above, we can either solve this by a single $2$-contact from $\hat u_l$ to $u_r$, or by a phase transition from $\check u_l$ to $\hat u_l$ followed by a $2$-contact from $\hat u_l$ to $u_r$.
+
+\begin{tikzpicture}
+% coordinates
+    \filldraw[fill=black!2, draw=black!50] plot [tension = 1] coordinates { (0.5,1.25) (2,2) (2,0.2) (0.38, 0.81) (0.5,1.25)};
+    \draw[->] (0,-0.2) -- (0,2.3) node[anchor=south east] {$q$};
+   
+    \draw[magenta!50] (0,0) -- (0.2,1.25) node[anchor = south] {$V_f$};
+    
+    \filldraw[black] (0.42,0.82) circle (0.6pt) node[anchor = north west]{$u_r$} ;
+    \filldraw[black] (0.47,1.22) circle (0.6pt) node[anchor = north west]{$\hat u_l$} ;
+    \filldraw[black] (0.17,1.22) circle (0.6pt) node[anchor = north]{$\check u_l$} ;
+    % \node at (1,1) {$\Omega_c$};
+     \draw[->] (-0.2,0) -- (2.3,0) node[anchor=north west] {$\rho$};
+    % contact disk
+    \draw[line width=0.45mm, orange!50, domain=0.35:0.47]  plot[id=x] function{(x/0.47)*(2-0.47)/(2-x)*1.2};
+    % \draw[-][black!50] (0, 0.98) -- (2, 0.2) node[anchor=south west] {$q_m(\rho)$} ;
+    \node at (2,-0.2) {$R$};
+     \node at (-0.2,2) {$Q_1$};
+     \node at (-0.2,0.2) {$Q_2$};
+     \node at (-0.2,1) {$Q$};
+     \draw[loosely dotted] (0,1) -- (2,1);
+     \draw[loosely dotted] (0,2) -- (2,2);
+     \draw[loosely dotted] (0,0.2) -- (2,0.2);
+     %\node at (1.2,-0.5) {$(3a)$};
+     % rarefactions and shocks
+    %\draw[lime] (1.05, 1.33) -- (2, 1.6) ;
+    %\draw[<-][cyan!50] (0.42, 1.19) -- (1, 1.33) ;
+    
+    %\draw[->][lime] (1.48,0.4)  -- (2, 0.2) ;
+    \draw[line width=0.35mm, yellow] (0.17,1.22) -- (0.47,1.22) ;
+     
+\end{tikzpicture}
+
+
+We have now proved Proposition $3.1$ in \cite{Colombo2003}.
 
 \begin{comment}
 
@@ -1585,6 +1646,15 @@ Looking back at one of the requiremens for the full model, was that we would nit
 \newpage
 
 \section{Qualitative properties}
+Consider the LWR model, with initial condition $\rho_l, x \leq x$ and $\rho_r = R, x > 0$. This is an instance of the traffic light problem, with the traffic light at $x = 0$. The solution, as we derived in Section $3.1$, is a shock with negative propagation speed. Physically we can interpret this as whenever a driver reaches the queue, he or she breaks and immediately stops. The queue will propagate backwards as time passes. This description works well when there are either few fast cars, or many slow cars. Looking at the corresponding case in our phase transition model, we have the following $u_l = (\rho_l, q_l), x < 0$ and $u_r = (R, q), x > 0$. As we have seen in Section $3.3$, there exists two thresholds densities $\rho_l^-$ and $\rho_l^+$ such that if
+\begin{itemize}
+    \item $\rho_l \leq \rho_l^-$ or $\rho_l \geq \rho_l^+$ we will see the same behaviour as in the LWR case. 
+    \item $\rho_l^- < \rho_l < \rho_l^+$, the solution is a phase transition possibly attached to a rarefaction wave.
+\end{itemize}
+In the last case, coming from the phase transition model we allow for solutions where drivers brake and the speed smoothly decreases. This holds independently from the value of $q_r$ \cite{Colombo2003}. This solution is in agreement with our experience when driving, and entering regions of the road with more traffic. It is clear that or stitching of the two solutions works well, and we have managed to preserve he properties of the LWR model, as well as introducing new properties from a congested phase. We have a similar result if the traffic light turns green \cite{Colombo2003}. Then we will gradually accelerate and then enter the free phase. This solution is a rarefaction wave followed by a phase transition. 
+
+At the start of Chapter $3$, we presented Figure \ref{fig:Kerner}, showing collected data from different countries. Comparing the Figure \ref{fig:Kerner}b) to our fundamental diagram for the phase transition model, it is clear that our model coincides with the observations. And with the some of the properties investigated, the results presented are promising. One fault the model has, is the lack of well-posedness if $V_c = V_f$. Recall, Kerner also suggests dividing the congested phase into two different phases; wide-moving jams and synchronised traffic flow. 
+
 Colombo proved the Cauchy problem admits a global solution in time, and without any assumptions on the number of phase boundaries or the smallness of initial data. In the proof of the Cauchy problem, the main tool is wave front-tracking, and it is shown that the model admits a bounded variation weak solution, and it holds globally for all times. Furthermore, global well-posedness for conservation laws developing phase transitions was shown by \cite{ColomboGoatinPriuli} in $2007$, using standards Riemann semigroups. 
 Also qualitative properties from traffic flow were shown to agree with the properties of our model \cite{Colombo2003}.   
 
@@ -1610,7 +1680,7 @@ Also qualitative properties from traffic flow were shown to agree with the prope
 \end{tikzpicture}
 
 
-One can reach a queue or a stop sign from anywhere in $\Omega_f$, even if in 80sone or in 40 sone. So it doesn't make sense to move from $u_l$ below $q_m$ up to the shortest distance between the two phases in order to do a phase transition. 
+%One can reach a queue or a stop sign from anywhere in $\Omega_f$, even if in 80sone or in 40 sone. So it doesn't make sense to move from $u_l$ below $q_m$ up to the shortest distance between the two phases in order to do a phase transition. 
 
 
 \newpage
