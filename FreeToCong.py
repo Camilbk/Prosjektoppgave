@@ -23,7 +23,7 @@ vf = lambda rho: (1-rho/R)*V
 vc = lambda rho,q: (1-rho/R)*q/rho
 
 xs = np.linspace(-1,1,1000)
-ts = np.linspace(1,2, 1000)
+ts = np.linspace(0,1, 1000)
 
 # Eigenvalues
 lambda1 = lambda r,q: (2/R - 1/r)*(Q-q) - Q/R
@@ -38,30 +38,46 @@ w_r = lambda r, q, xi: ( R*(r*xi - q +Q) + Q*r)/(2*(Q-q))
 w_q = lambda r, q, xi: R/2*( (q-Q)/r - xi ) +Q/2
 
 # Initial values, u_l, u_r
-r_l = 0.08
-q_l = 0.38
 
-r_m1 = 0.25
-q_m1 = 0.38
+r_l = 0.79
+q_l = 0.9
 
-r_m2 = 0.68
-q_m2 = 0.16
+r_m1 = 0.24
+q_m1 = 0.62
 
-r_r = 0.9
-q_r = 0.65
+r_m2 = 0.24
+q_m2 = 0.62
+
+r_r = 0.11
+q_r = 0.56
+
+def initialValuesfor1a():
+    # 1-rarefaction followed by phase transition
+    r_l = 0.79
+    q_l = 0.9
+
+    r_m1 = 0.24
+    q_m1 = 0.62
+
+    r_m2 = 0.24
+    q_m2 = 0.62
+
+    r_r = 0.11
+    q_r = 0.56
 
 def initialValuesfor2a():
+    # Single phase transition fra u_l til u_r
     r_l = 0.11
     q_l = 0.55
 
-    r_m1 = 0.22
-    q_m1 = 0.58
+    r_m1 = 0.11
+    q_m1 = 0.55
 
-    r_m2 = 0.22
-    q_m2 = 0.58
+    r_m2 = 0.1
+    q_m2 = 0.55
 
-    r_r = 0.7
-    q_r = 0.75
+    r_r = 0.8
+    q_r = 0.2
 
 def initialValuesForCompoundWave3b():
     r_l = 0.08
@@ -186,11 +202,13 @@ print("r_r =", r_r)
 
 
 plotInitialValues()
+plotAnalyticalSolutionFreeToCong(0.3, True)
+plotAnalyticalSolutionFreeToCong(0.7, True)
 plotAnalyticalSolutionFreeToCong(0.7, True)
 plot_xtSolFreeToCong()
 
 
 
-print("Speed of phase boundary: " , Lambda(r_l, r_m1, q_l, q_m1))
-print("Speed of shock: " , lambda1(r_m2, q_m2))
-print("Speed of contact: ", lambda2(r_r, q_r))
+print("Speed of phase boundary from u_l to u_m1: " , Lambda(r_l, r_m1, q_l, q_m1))
+print("Speed of 1-wave at u_m2: " , lambda1(r_m2, q_m2))
+print("Speed of 2-contact at u_r: ", lambda2(r_r, q_r))
