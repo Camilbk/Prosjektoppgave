@@ -9,12 +9,15 @@
     
     \filldraw[black] (0.46,1.18) circle (0.6pt) node[anchor = south ]{$a$} ;
     \filldraw[black] (0.22,1.09) circle (0.6pt) node[anchor = south ]{$b$};
+    
     \filldraw[black] (1.85,1.73) circle (0.6pt) node[anchor = west]{$u_l$} ;
     \filldraw[black] (0.18,0.92) circle (0.6pt) node[anchor = north ]{$u_r$} ;
     \filldraw[black] (1.61,0.6) circle (0.6pt) node[anchor = north]{$c$};
     
-     \draw[-][black!30] (0.22,1.09) -- (1.85,1.73) ;
+     \draw[-][line width=0.3mm,cyan!50] (0.22,1.09) -- (1.85,1.73) ;
      \draw[-][black!30] (0.18,0.92)  -- (1.61,0.6) ;
+     \draw[-][line width=0.3mm,yellow] (0.46,1.18) -- (0.22,1.09) ;
+     \draw[-][line width=0.3mm,cyan!50] (0.22,1.09) -- (0.18,0.92)  ;
   
      \node at (1.2,-0.5) {$(1)$};
      % rarefactions and shocks
@@ -40,14 +43,15 @@
 
     \draw[magenta!50] (0,0) -- (0.25,1.25) ;
     
-    \filldraw[black] (0.46,1.18) circle (0.6pt) node[anchor = south ]{$b$} ;
+    \filldraw[black] (0.385,0.9) circle (0.6pt) node[anchor = north west ]{$b$} ;
     \filldraw[black] (0.22,1.09) circle (0.6pt) node[anchor = south ]{$a$};
     \filldraw[black] (1.85,1.73) circle (0.6pt) node[anchor = west]{$u_r$} ;
     \filldraw[black] (0.18,0.92) circle (0.6pt) node[anchor = north ]{$u_l$} ;
     \filldraw[black] (1.61,0.6) circle (0.6pt) node[anchor = north]{$c$};
     
      \draw[-][black!30] (0.22,1.09) -- (1.85,1.73) ;
-     \draw[-][black!30] (0.18,0.92)  -- (1.61,0.6) ;
+     \draw[-][line width=0.3mm, yellow] (0.18,0.92)  -- (0.385,0.9) ;
+     \draw[-][line width=0.3mm,cyan!50] (0.385,0.9)  -- (1.61,0.6) ;
   
      \node at (1.2,-0.5) {$(2)$};
      % rarefactions and shocks
@@ -59,7 +63,7 @@
     %\draw[yellow] (0.135,1.05) -- (0.45,1.11);
     
     % contacts
-    \draw[ black!30, domain=1.3:1.86]  plot[id=x] function{(x/1.61)*(2-1.61)/(2-x)*0.6};
+    \draw[line width=0.3mm, orange!90, domain=1.3:1.86]  plot[id=x] function{(x/1.61)*(2-1.61)/(2-x)*0.6};
     %\draw[ orange!50, domain=0:1.28]  plot[id=x] function{(x/1.16)*(2-1.16)/(2-x)*1.63};
      
 \end{tikzpicture}
@@ -75,13 +79,14 @@
     
     \filldraw[black] (0.46,1.18) circle (0.6pt) node[anchor = south ]{$a$} ;
     \filldraw[black] (0.22,1.09) circle (0.6pt) node[anchor = south ]{$b$};
-    \filldraw[black] (1.85,1.73) circle (0.6pt) node[anchor = west]{$u_l$} ;
-    \filldraw[black] (0.14,0.5) circle (0.6pt) node[anchor = north ]{$u_r$} ;
+    \filldraw[black] (1.85,1.73) circle (0.6pt) node[anchor = west]{$u_r$} ;
+    \filldraw[black] (0.14,0.5) circle (0.6pt) node[anchor = north ]{$u_l$} ;
     \filldraw[black] (1.5,0.4) circle (0.6pt) node[anchor = north]{$c$};
     \filldraw[black] (1,0.6) circle (0.6pt) node[anchor = north]{$d$};
     
      \draw[-][black!30] (0.22,1.09) -- (1.85,1.73) ;
-     \draw[-][black!30] (0.14,0.5)  -- (1,0.6) ;
+     \draw[-][line width=0.3mm, yellow] (0.14,0.5)  -- (1,0.6) ;
+     \draw[-][line width=0.3mm, cyan!50](1,0.6)  -- (1.5,0.4) ;
   
      \node at (1.2,-0.5) {$(3)$};
      % rarefactions and shocks
@@ -93,7 +98,7 @@
     %\draw[yellow] (0.135,1.05) -- (0.45,1.11);
     
     % contacts
-    \draw[ black!30, domain=1.3:1.86]  plot[id=x] function{(x/1.61)*(2-1.61)/(2-x)*0.6};
+    \draw[line width=0.3mm, orange!90, domain=1.3:1.86]  plot[id=x] function{(x/1.61)*(2-1.61)/(2-x)*0.6};
     %\draw[ orange!50, domain=0:1.28]  plot[id=x] function{(x/1.16)*(2-1.16)/(2-x)*1.63};
      
 \end{tikzpicture}
@@ -110,12 +115,15 @@
     \filldraw[black] (0.46,1.18) circle (0.6pt) node[anchor = south ]{$a$} ;
     \filldraw[black] (0.22,1.09) circle (0.6pt) node[anchor = south ]{$b$};
     \filldraw[black] (1.85,1.73) circle (0.6pt) node[anchor = west]{$u_l$} ;
-    \filldraw[black] (0.14,0.5) circle (0.6pt) node[anchor = north ]{$u_r$} ;
+    \filldraw[black] (0.12,0.5) circle (0.6pt) node[anchor = north ]{$u_r$} ;
     \filldraw[black] (1.5,0.4) circle (0.6pt) node[anchor = north]{$c$};
 
     
      \draw[-][black!30] (0.22,1.09) -- (1.85,1.73) ;
-     \draw[-][black!30] (0.14,0.5)  -- (1.5,0.4) ;
+     \draw[-][black!30] (0.12,0.5)  -- (1.5,0.4) ;
+      \draw[-][line width=0.3mm,cyan!50] (0.22,1.09) -- (1.85,1.73) ;
+     \draw[-][line width=0.3mm,yellow] (0.46,1.18) -- (0.22,1.09) ;
+     \draw[-][line width=0.3mm,cyan!50] (0.22,1.09) -- (0.12,0.5) ;
   
      \node at (1.2,-0.5) {$(4)$};
      % rarefactions and shocks
@@ -148,7 +156,7 @@
     \filldraw[black] (0.37,0.91) circle (0.6pt) node[anchor = north ]{$c$} ;
     \filldraw[black] (1.61,0.6) circle (0.6pt) node[anchor = north]{$u_r$};
     
-     \draw[-][black!30] (0.22,1.09) -- (1.85,1.73) ;
+     \draw[-][line width=0.3mm, yellow] (0.22,1.09) -- (1.85,1.73) ;
      \draw[-][black!30] (0.18,0.92)  -- (1.61,0.6) ;
   
      \node at (1.2,-0.5) {$(5)$};
@@ -161,7 +169,7 @@
     %\draw[yellow] (0.135,1.05) -- (0.45,1.11);
     
     % contacts
-    \draw[ black!30, domain=1.3:1.86]  plot[id=x] function{(x/1.61)*(2-1.61)/(2-x)*0.6};
+    \draw[ line width=0.3mm, orange!90, domain=1.3:1.86]  plot[id=x] function{(x/1.61)*(2-1.61)/(2-x)*0.6};
     %\draw[ orange!50, domain=0:1.28]  plot[id=x] function{(x/1.16)*(2-1.16)/(2-x)*1.63};
      
 \end{tikzpicture}
@@ -183,7 +191,7 @@
     
      \draw[-][black!30] (0.22,1.09) -- (1.85,1.73) ;
      \draw[-][line width=0.3mm, yellow] (0.18,0.92)  -- (1.61,0.6) ;
-     \draw[-][line width=0.3mm, lime] (0.18,0.92) -- (0.22,1.09); 
+     \draw[-][line width=0.3mm, green] (0.18,0.92) -- (0.22,1.09); 
   
      \node at (1.2,-0.5) {$(6)$};
      % rarefactions and shocks
