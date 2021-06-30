@@ -1495,13 +1495,21 @@ We can now state the solutions above for $u(x,t)$.
 We demonstrate three examples, $1a), 2a$) and $3b)$. 
 \begin{figure}[H]
      \centering
-     \begin{subfigure}[t]{0.35\textwidth}
+     \begin{subfigure}[t]{0.2\textwidth}
          \centering
          \includegraphics[width=\textwidth]{Figures/Model/Plots/Sys1aIV.png}
      \end{subfigure}
-     \begin{subfigure}[t]{0.35\textwidth}
+     \begin{subfigure}[t]{0.2\textwidth}
          \centering
          \includegraphics[width=\textwidth]{Figures/Model/Plots/Sys1aAtTime.png}
+     \end{subfigure}
+     \begin{subfigure}[t]{0.2\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/Plots/Sys1aAtTime4.png}
+     \end{subfigure}
+     \begin{subfigure}[t]{0.2\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/Plots/Sys1aAtTime7.png}
      \end{subfigure}
      \hfill
      \begin{subfigure}[b]{0.35\textwidth}
@@ -1516,15 +1524,23 @@ We demonstrate three examples, $1a), 2a$) and $3b)$.
         \label{fig:Example1a}
 \end{figure} \begin{figure}[H]
      \centering
-     \begin{subfigure}[t]{0.35\textwidth}
+     \begin{subfigure}[t]{0.2\textwidth}
          \centering
          \includegraphics[width=\textwidth]{Figures/Model/Plots/Sys2aIV.png}
      \end{subfigure}
-     \begin{subfigure}[t]{0.35\textwidth}
+     \begin{subfigure}[t]{0.2\textwidth}
          \centering
          \includegraphics[width=\textwidth]{Figures/Model/Plots/Sys2aAtTime.png}
      \end{subfigure}
-     \hfill 
+     \begin{subfigure}[t]{0.2\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/Plots/Sys2aAtTime5.png}
+     \end{subfigure}
+     \begin{subfigure}[t]{0.2\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/Plots/Sys2aAtTime7.png}
+     \end{subfigure}
+     \hfill
      \begin{subfigure}[b]{0.35\textwidth}
          \centering
          \includegraphics[width=\textwidth]{Figures/Model/Plots/Sys2aRho.png}
@@ -1533,19 +1549,27 @@ We demonstrate three examples, $1a), 2a$) and $3b)$.
          \centering
          \includegraphics[width=\textwidth]{Figures/Model/Plots/Sys2aQ.png}
      \end{subfigure}
-        \caption{The evolution of a solution with initial values $u_l = (0.11, 0.55), u_r = (0.8, 0.2)$, seen to the top left. After $t = 0.7$, we have the top right figure. In the $(x,t)$-plane, we have bottom left for $\rho(x,t)$ and bottom right for $q(x,t)$. 
+        \caption{The evolution of a solution with initial values $u_l = (0.11, 0.56), u_r = (0.8, 0.9)$, seen to the top left. After $t = 0.7$, we have the top right figure. In the $(x,t)$-plane, we have bottom left for $\rho(x,t)$ and bottom right for $q(x,t)$. 
         $R = 1, Q = 0.5, V = 5, V_c = 0.5$.}
         \label{fig:Example2a}
 \end{figure}
 \begin{figure}[H]
      \centering
-     \begin{subfigure}[t]{0.35\textwidth}
+     \begin{subfigure}[t]{0.2\textwidth}
          \centering
          \includegraphics[width=\textwidth]{Figures/Model/Plots/Sys3bIV.png}
      \end{subfigure}
-     \begin{subfigure}[t]{0.35\textwidth}
+     \begin{subfigure}[t]{0.2\textwidth}
          \centering
-         \includegraphics[width=\textwidth]{Figures/Model/Plots/Sys3bAtTime.png}
+         \includegraphics[width=\textwidth]{Figures/Model/Plots/Sys3bAtTime3.png}
+     \end{subfigure}
+     \begin{subfigure}[t]{0.2\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/Plots/Sys3bAtTime5.png}
+     \end{subfigure}
+     \begin{subfigure}[t]{0.2\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{Figures/Model/Plots/Sys3bAtTime7.png}
      \end{subfigure}
      \hfill 
      \begin{subfigure}[b]{0.35\textwidth}
@@ -1664,6 +1688,8 @@ In the proof of case $(5)$ we argued that a rarefaction in the free phase follow
     &= \frac{\rho_r( v_f(\rho_r) - v_c(\rho_m)}{\rho_m - \rho_r} = \frac{\rho_r( v_f(\rho_r)}{\rho_m - \rho_r} > 0 
 \end{align*}
 This proof is similar to the one above. Recall, the phase-transition may start in $\rho_m = R$, and inserting this we get the last line above. Furthermore, note that $\rho_m - \rho_r > 0$. This proves that we are not allowed to take a $2$- contact followed by a phase transition. 
+
+We continue with a few examples. Note that we have already shown case $(3)$ in example $3b)$ above. We will now demonstrate $(4)$ and $(6)$ as they are least similar to the examples already demonstrated above. 
 
 Looking back at one of the requirements for the full model, was that we would not allow this solution by any $2 \times 2$-system of conservation laws. In the $2 \times 2$ system, we had a at most two waves in a solution, in this case we can have three waves in our solution, e.g. a phase transition, rarefaction and a $2$-contact. 
 \begin{wrapfigure}[9]{r}{0.25\textwidth}
