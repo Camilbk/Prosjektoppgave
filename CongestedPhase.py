@@ -1,7 +1,7 @@
 import numpy as np
 from matplotlib import pyplot as plt
 plt.rcParams.update({
-    "font.size":15})
+    "font.size":20})
 
 # CONGESTED PHASE
 # r_t + (rv)_x = 0
@@ -28,16 +28,46 @@ lambda2 = lambda r,q: q/r*(1-r/R)
 w_r = lambda r, q, xi: ( R*(r*xi - q +Q) + Q*r)/(2*(Q-q))
 w_q = lambda r, q, xi: R/2*( (q-Q)/r - xi ) +Q/2
 
+def Rarefaction():
+    r_l = 0.8
+    q_l = 1
+
+    r_r = 0.2
+    q_r = 0.4
+
+    r_m = 0.3
+    q_m = 0.69
+
 # Initial values, u_l, u_r
-r_l = 0.8
-q_l = 1
 
-r_r = 0.2
-q_r = 0.4
+def shock():
+    r_l = 0.3
+    q_l = 0.7
 
-r_m = 0.3
-q_m = 0.69
+    r_r = 0.8
+    q_r = 0.4
 
+    r_m = 0.92
+    q_m = 1.11
+
+def contact():
+    r_l = 0.4
+    q_l = 0.5
+
+    r_r = 0.8
+    q_r = 0.2
+
+    r_m = 0.91
+    q_m = 0.5
+
+r_l = 0.4
+q_l = 0.5
+
+r_r = 0.8
+q_r = 0.2
+
+r_m = 0.91
+q_m = 0.5
 def plotInitialValues():
     sol_r = np.zeros(len(xs))
     sol_q = np.zeros(len(xs))
@@ -188,5 +218,7 @@ print(chooseEntropySol())
 
 
 plotInitialValues()
-plotAnalyticalSolution(0.4, True)
+plotAnalyticalSolution(0.2, True)
+plotAnalyticalSolution(0.5, True)
+plotAnalyticalSolution(0.8, True)
 plot_xtSol()

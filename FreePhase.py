@@ -1,5 +1,7 @@
 import numpy as np
 from matplotlib import pyplot as plt
+from matplotlib import cm
+from matplotlib.ticker import LinearLocator
 plt.rcParams.update({
     "font.size":15})
 
@@ -13,6 +15,13 @@ V = 5   # max speed
 vf = lambda rho: (1-rho/R)*V
 
 # initial condition
+#Rarefaction
+#rho_l = 0.8
+#rho_r = 0.2
+#Backwards Shock
+#rho_l = 0.2
+#rho_r = 0.9
+#Forward Shock
 rho_l = 0.3
 rho_r = 0.6
 
@@ -93,8 +102,28 @@ def plot_xtSol():
     plt.ylabel("t")
     plt.show()
 
+    fig = plt.figure()
+    ax = plt.axes(projection='3d')
+    surf = ax.plot_surface(X, T, sol_xt, cmap='GnBu', antialiased=False)
+    ax.set_title(r"$ \rho(x, t) $")
+    fig.colorbar(surf, ax=ax, shrink=0.5, aspect=5)
+    ax.set_xlabel('x')
+    ax.set_ylabel('t')
+    ax.set_zlabel(r"$ \rho $")
+    plt.show()
 
-plotInitialValues()
-plotAnalyticalSolution(0.5, True)
+
+#plotInitialValues()
+r2 = plotAnalyticalSolution(0.2, False)
+r5 = plotAnalyticalSolution(0.5, False)
+r8 = plotAnalyticalSolution(0.8, False)
+plt.plot(xs, r2, 'r', label=r"$ t = 0.2 $", color="teal")
+plt.plot(xs, r5, 'r', label=r"$ t = 0.5 $",  color="mediumturquoise")
+plt.plot(xs, r8, 'r', label=r"$ t = 0.8 $",  color="lightskyblue")
+plt.title(r"$ \rho(x, t ) $")
+plt.xlabel("x")
+plt.ylabel("u")
+plt.legend()
+plt.show()
 plot_xtSol()
 

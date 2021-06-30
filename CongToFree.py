@@ -1,7 +1,7 @@
 import numpy as np
 from matplotlib import pyplot as plt
 plt.rcParams.update({
-    "font.size":15})
+    "font.size":20})
 
 ##
 ##  HYPERBOLIC TRAFFIC MODEL WITH
@@ -37,15 +37,70 @@ Lambda = lambda r_l,r_r, q_l, q_r: (r_l*vf(r_l) - r_r*vc(r_r, q_r))/(r_l - r_r)
 w_r = lambda r, q, xi: ( R*(r*xi - q +Q) + Q*r)/(2*(Q-q))
 w_q = lambda r, q, xi: R/2*( (q-Q)/r - xi ) +Q/2
 
+# Rarefaction wave in the free phase
+w = lambda xi: R/2*(1-xi/V)
+# Speed of rarefaction wave in the free phase
+lmda = lambda rho: V*(1-2*rho/R)
+
 # Initial values, u_l, u_r
+def initialValuesfor1a():
+    # 1-rarefaction followed by phase transition
+    r_l = 0.79
+    q_l = 0.9
+
+    r_m1 = 0.24
+    q_m1 = 0.62
+
+    r_m2 = 0.24
+    q_m2 = 0.62
+
+    r_r = 0.11
+    q_r = 0.56
+
+def initialValuesfor6():
+    #  phase transition followed by a shock in the free phase
+    r_l = 0.79
+    q_l = 0.2
+
+    r_m1 = 0.09
+    q_m1 = 0.46
+
+    r_m2 = 0.12
+    q_m2 = 0.61
+
+    r_r = 0.12
+    q_r = 0.61
+
+def initialValuesfor4():
+    #  phase transition followed by a shock in the free phase
+    #V_c = 0.3, V = 5
+    r_l = 0.79
+    q_l = 1.06
+
+    r_m1 = 0.16
+    q_m1 = 0.61
+
+    r_m2 = 0.12
+    q_m2 = 0.58
+
+    r_r = 0.04
+    q_r = 0.2
+
+
 r_l = 0.79
-q_l = 0.9
+q_l = 1.06
 
-r_m = 0.24
-q_m = 0.62
+r_m1 = 0.25
+q_m1 = 0.68
 
-r_r = 0.11
-q_r = 0.56
+r_m2 = 0.12
+q_m2 = 0.58
+
+r_r = 0.04
+q_r = 0.2
+
+# Speed of shock in the free phase
+s = (r_r*vf(r_r) - r_l*vf(r_l))/(r_r - r_l)
 
 
 def plotInitialValues():
@@ -77,11 +132,11 @@ def plotInitialValues():
 
 ##            ANALYTICAL SOLUTION, u_l in Free and u_r in Cong
 ##
-##            u_l    for  x < Lambda (u_l) t
-## u(x,t) =   u_m1   for  Lambda(u_l)t < x < lambda1 (u_m1)t
-##            w1     for  lambda1(u_m1)t < x < lambda1(u_m2)t
-##            u_m2   for  lambda1(u_m2)t < x < lambda2(u_r)t
-##            u_r    for  x > lambda2(u_r)t
+##            u_l    for  x < lambda1 (u_l) t
+## u(x,t) =   w1     for  lambda1(u_l)t < x < lambda1 (u_m1)t
+##            u_m1   for  lambda1(u_m1)t < x < Lambda(u_m2)t
+##            u_m2   for  Lambda(u_m2)t < x < lambda(u_r)t
+##            u_r    for  x > lambda(u_r)t
 ##
 ##
 
@@ -95,15 +150,23 @@ def plotAnalyticalSolutionCongToFree(t, plot):
             sol_r[i] = r_l
             sol_q[i] = q_l
             i += 1
-        elif (lambda1(r_l, q_l) * t < x) and (x < lambda1(r_m, q_m) * t):
+        elif (lambda1(r_l, q_l) * t < x) and (x < lambda1(r_m1, q_m1) * t):
             sol_r[i] = w_r(r_l, q_l, x/t)
             sol_q[i] = w_q(r_l, q_l, x/t)
             i += 1
-        elif (lambda1(r_m, q_m) * t < x) and (x < Lambda(r_m, r_r, q_m, q_r) * t):
-            sol_r[i] = r_m
-            sol_q[i] = q_m
+        elif (lambda1(r_m1, q_m1) * t < x) and (x < Lambda(r_m1, r_m2, q_m1, q_m2) * t):
+            sol_r[i] = r_m1
+            sol_q[i] = q_m1
             i += 1
-        elif x > Lambda(r_m, r_r, q_m, q_r) * t:
+        elif (Lambda(r_m1, r_m2, q_m1, q_m2) * t < x) and (x < lmda(r_m2) * t):
+            sol_r[i] = r_m2
+            sol_q[i] = q_m2
+            i += 1
+        elif (lmda(r_m2) * t) and (x < lmda(r_r) * t):
+            sol_r[i] = w(x/t)
+            sol_q[i] = w(x/t)*V
+            i += 1
+        elif x > lmda(r_r) * t:
             sol_r[i] = r_r
             sol_q[i] = q_r
             i += 1
@@ -149,7 +212,14 @@ print("r_r =", r_r)
 
 plotInitialValues()
 plotAnalyticalSolutionCongToFree(0.2, True)
+plotAnalyticalSolutionCongToFree(0.4, True)
+plotAnalyticalSolutionCongToFree(0.7, True)
 plot_xtSolCongToFree()
 
+print("Speed of phase boundary from u_l to u_m1: " , Lambda(r_l, r_m1, q_l, q_m1))
+print("Speed of 1-wave at u_m2: " , lambda1(r_m2, q_m2))
+print("Speed of 2-contact at u_r: ", lambda2(r_r, q_r))
+print("Speed of rarefaction : " , lmda(r_r))
+print("Speed of shock : " , s)
 
 

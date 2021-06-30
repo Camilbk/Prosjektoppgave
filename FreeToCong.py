@@ -1,7 +1,7 @@
 import numpy as np
 from matplotlib import pyplot as plt
 plt.rcParams.update({
-    "font.size":15})
+    "font.size":20})
 
 ##
 ##  HYPERBOLIC TRAFFIC MODEL WITH
@@ -32,52 +32,40 @@ lambda2 = lambda r,q: q/r*(1-r/R)
 # Speed of phase boundary
 Lambda = lambda r_l,r_r, q_l, q_r: (r_l*vf(r_l) - r_r*vc(r_r, q_r))/(r_l - r_r)
 
-# Rarefaction
+# 1-family
 #w_r = lambda r, q, xi: (R*(r*xi - q + 2*Q) -Q*r)/(2*(q- 2*Q + R/r*(Q-q)))
 w_r = lambda r, q, xi: ( R*(r*xi - q +Q) + Q*r)/(2*(Q-q))
 w_q = lambda r, q, xi: R/2*( (q-Q)/r - xi ) +Q/2
 
+
 # Initial values, u_l, u_r
+r_l = 0.08
+q_l = 0.38
 
-r_l = 0.79
-q_l = 0.9
+r_m1 = 0.25
+q_m1 = 0.38
 
-r_m1 = 0.24
-q_m1 = 0.62
+r_m2 = 0.68
+q_m2 = 0.16
 
-r_m2 = 0.24
-q_m2 = 0.62
+r_r = 0.9
+q_r = 0.65
 
-r_r = 0.11
-q_r = 0.56
 
-def initialValuesfor1a():
-    # 1-rarefaction followed by phase transition
-    r_l = 0.79
-    q_l = 0.9
-
-    r_m1 = 0.24
-    q_m1 = 0.62
-
-    r_m2 = 0.24
-    q_m2 = 0.62
-
-    r_r = 0.11
-    q_r = 0.56
 
 def initialValuesfor2a():
     # Single phase transition fra u_l til u_r
     r_l = 0.11
-    q_l = 0.55
+    q_l = 0.56
 
-    r_m1 = 0.11
-    q_m1 = 0.55
+    r_m1 = 0.8
+    q_m1 = 0.9
 
-    r_m2 = 0.1
-    q_m2 = 0.55
+    r_m2 = 0.8
+    q_m2 = 0.9
 
     r_r = 0.8
-    q_r = 0.2
+    q_r = 0.9
 
 def initialValuesForCompoundWave3b():
     r_l = 0.08
@@ -201,9 +189,15 @@ print("r_r =", r_r)
 #print(chooseEntropySol())
 
 
+#plotInitialValues()
+#plotAnalyticalSolutionFreeToCong(0.3, True)
+#plotAnalyticalSolutionFreeToCong(0.7, True)
+#plotAnalyticalSolutionFreeToCong(0.7, True)
+#plot_xtSolFreeToCong()
+
 plotInitialValues()
 plotAnalyticalSolutionFreeToCong(0.3, True)
-plotAnalyticalSolutionFreeToCong(0.7, True)
+plotAnalyticalSolutionFreeToCong(0.5, True)
 plotAnalyticalSolutionFreeToCong(0.7, True)
 plot_xtSolFreeToCong()
 
